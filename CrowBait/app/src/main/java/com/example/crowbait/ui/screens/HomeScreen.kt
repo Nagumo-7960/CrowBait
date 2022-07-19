@@ -1,9 +1,6 @@
 package com.example.crowbait.ui.screens
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +19,10 @@ fun HomeScreen(){
             ){
         Card(
             modifier = Modifier
-                .size(100.dp,200.dp)
+                .size(100.dp, 200.dp)
+                .padding(
+                    top = 20.dp
+                )
         ) {
             Box(
                 modifier = Modifier
@@ -33,6 +33,18 @@ fun HomeScreen(){
                     text = "Deck",
                     fontSize = 30.sp
                 )
+            }
+        }
+        Card(
+            modifier = Modifier
+                .size(250.dp,75.dp)
+        ) {
+            Box (
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
+                    ){
+                Text(text = "ゲームスタート", fontSize = 30.sp)
             }
         }
     }
