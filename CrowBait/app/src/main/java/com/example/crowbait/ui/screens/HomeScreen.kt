@@ -11,47 +11,56 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeScreen(){
-    Column (
+fun HomeScreen() {
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            ){
-        Card(
+    ) {
+        Column(
             modifier = Modifier
-                .size(100.dp, 200.dp)
                 .padding(
                     top = 20.dp
                 )
         ) {
-            Box(
+            Card(
                 modifier = Modifier
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
+                    .size(100.dp, 200.dp)
             ) {
-                Text(
-                    text = "Deck",
-                    fontSize = 30.sp
-                )
+                Box(
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Deck",
+                        fontSize = 30.sp
+                    )
+                }
             }
         }
-        Card(
-            modifier = Modifier
-                .size(250.dp,75.dp)
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Box (
+            Card(
                 modifier = Modifier
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
-                    ){
-                Text(text = "ゲームスタート", fontSize = 30.sp)
+                    .size(250.dp, 75.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "ゲームスタート", fontSize = 30.sp)
+                }
             }
         }
+
     }
 }
 
 @Preview
 @Composable
-fun PreviewHomeScreen(){
+fun PreviewHomeScreen() {
     HomeScreen()
 }
