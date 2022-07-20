@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.crowbait.ui.components.DeckCard
 
 @Composable
 fun BattleScreen() {
@@ -24,6 +25,13 @@ fun BattleScreen() {
             )
         ) {
             Text(text = "1回戦", fontSize = 30.sp)
+        }
+        Column(
+            modifier = Modifier.padding(
+                top = 20.dp
+            )
+        ){
+            DeckCard(deckCardNumber = 1)
         }
 
     }
