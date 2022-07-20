@@ -22,8 +22,14 @@ fun SelectCard(selectCardNumber: Int) {
             shape = CircleShape,
         ) {
             //手動でテキストの位置を調整しているので、要修正
-            Text(modifier = Modifier.padding(top = 10.dp, start = 18.dp),
-                text = selectCardNumber.toString(), fontSize = 20.sp)
+            if(selectCardNumber<10){
+                Text(modifier = Modifier.padding(top = 10.dp, start = 18.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp)
+            }else{
+                Text(modifier = Modifier.padding(top = 10.dp, start = 13.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp)
+            }
+
         }
     }
 
@@ -32,6 +38,6 @@ fun SelectCard(selectCardNumber: Int) {
 @Preview
 @Composable
 fun PreviewSelectCard() {
-    SelectCard(0)
+    SelectCard(10)
 }
 
