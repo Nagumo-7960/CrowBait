@@ -1,8 +1,10 @@
 package com.example.crowbait.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,8 +32,33 @@ fun BattleScreen() {
             modifier = Modifier.padding(
                 top = 20.dp
             )
-        ){
+        ) {
             DeckCard(deckCardNumber = 1)
+        }
+        Column(modifier = Modifier.padding(top = 40.dp)) {
+            Row {
+                Card {
+                    Text("先行プレイヤー", fontSize = 30.sp)
+                }
+                Row(modifier = Modifier.padding(start = 10.dp)) {
+                    Text(text = "得点：0", fontSize = 30.sp)
+                }
+            }
+        }
+        Column(
+            modifier = Modifier
+                .padding(top = 20.dp)
+                .fillMaxSize()
+        ) {
+            Row() {
+
+            }
+            Row() {
+
+            }
+            Row() {
+
+            }
         }
 
     }
