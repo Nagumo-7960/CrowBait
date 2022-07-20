@@ -56,17 +56,24 @@ fun BattleScreen() {
         ) {
             Row() {
                 for (i in 1..5){
-                    SelectCard(selectCardNumber = i)
+                    Column(modifier = Modifier.padding(start = 10.dp)) {
+                        SelectCard(selectCardNumber = i)
+                    }
+
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10){
-                    SelectCard(selectCardNumber = i)
+                    Column(modifier = Modifier.padding(start = 10.dp)) {
+                        SelectCard(selectCardNumber = i)
+                    }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15){
-                    SelectCard(selectCardNumber = i)
+                    Column(modifier = Modifier.padding(start = 10.dp)) {
+                        SelectCard(selectCardNumber = i)
+                    }
                 }
             }
         }
