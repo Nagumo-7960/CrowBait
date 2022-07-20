@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -9,9 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -45,6 +47,10 @@ fun HomeScreen() {
             Card(
                 modifier = Modifier
                     .size(250.dp, 75.dp)
+                    .clickable(
+                        enabled = true,
+                        onClick = onClick
+                    )
             ) {
                 Box(
                     modifier = Modifier
@@ -59,8 +65,12 @@ fun HomeScreen() {
     }
 }
 
+
 @Preview
 @Composable
 fun PreviewHomeScreen() {
-    HomeScreen()
+    val navController = rememberNavController()
+    HomeScreen {
+        navController.navigate("battle")
+    }
 }
