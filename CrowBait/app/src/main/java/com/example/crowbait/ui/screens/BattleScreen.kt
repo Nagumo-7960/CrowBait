@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.SelectCard
 
 @Composable
 fun BattleScreen() {
@@ -51,13 +52,19 @@ fun BattleScreen() {
                 .fillMaxSize()
         ) {
             Row() {
-
+                for (i in 1..5){
+                    SelectCard(selectCardNumber = i)
+                }
             }
             Row() {
-
+                for (i in 6..10){
+                    SelectCard(selectCardNumber = i)
+                }
             }
             Row() {
-
+                for (i in 11..15){
+                    SelectCard(selectCardNumber = i)
+                }
             }
         }
 
