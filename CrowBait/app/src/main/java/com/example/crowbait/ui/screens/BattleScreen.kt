@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
+var battleRound = 1
+
 @Composable
 fun BattleScreen() {
     Column(
@@ -27,7 +29,7 @@ fun BattleScreen() {
                 top = 20.dp
             )
         ) {
-            Text(text = "1回戦", fontSize = 30.sp)
+            Text(text = "${battleRound}回戦", fontSize = 30.sp)
         }
         Column(
             modifier = Modifier.padding(
