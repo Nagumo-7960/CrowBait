@@ -48,20 +48,21 @@ fun BattleScreen() {
         }
         Column(
             modifier = Modifier
-                .padding(top = 20.dp)
-                .fillMaxSize()
+                .padding(top = 40.dp)
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row() {
                 for (i in 1..5){
                     SelectCard(selectCardNumber = i)
                 }
             }
-            Row() {
+            Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10){
                     SelectCard(selectCardNumber = i)
                 }
             }
-            Row() {
+            Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15){
                     SelectCard(selectCardNumber = i)
                 }
