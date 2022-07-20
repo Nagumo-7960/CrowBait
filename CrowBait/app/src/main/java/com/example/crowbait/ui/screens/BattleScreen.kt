@@ -16,7 +16,8 @@ import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
 var battleRound = 1
-
+val firstPlayerHand: Array<Int?> = arrayOfNulls(15)
+val secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 @Composable
 fun BattleScreen() {
     Column(

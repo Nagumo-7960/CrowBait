@@ -1,7 +1,7 @@
 package com.example.crowbait.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -13,21 +13,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun SelectCard(selectCardNumber: Int) {
-    Box(contentAlignment = Alignment.Center){
+fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
+    Box(contentAlignment = Alignment.Center) {
         Card(
-            modifier = Modifier.size(50.dp, 50.dp),
+            modifier = Modifier
+                .size(50.dp, 50.dp)
+                .clickable(
+                    enabled = true,
+                    onClick = onClick
+                ),
             shape = CircleShape,
         ) {
             //手動でテキストの位置を調整しているので、要修正
-            if(selectCardNumber<10){
-                Text(modifier = Modifier.padding(top = 10.dp, start = 18.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp)
-            }else{
-                Text(modifier = Modifier.padding(top = 10.dp, start = 13.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp)
+            if (selectCardNumber < 10) {
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 18.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp
+                )
+            } else {
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 13.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp
+                )
             }
 
         }
@@ -38,6 +48,13 @@ fun SelectCard(selectCardNumber: Int) {
 @Preview
 @Composable
 fun PreviewSelectCard() {
-    SelectCard(10)
+    val navController = rememberNavController()
+    SelectCard(
+        10,
+        onClick = {
+            navController.navigate("battle")
+        }
+    )
 }
+
 
