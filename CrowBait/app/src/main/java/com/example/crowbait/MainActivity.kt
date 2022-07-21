@@ -9,7 +9,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.theme.CrowBaitTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,24 +22,13 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = Color.DarkGray
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    Navigation(navController = navController)
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    CrowBaitTheme {
-        Greeting("Android")
-    }
-}
