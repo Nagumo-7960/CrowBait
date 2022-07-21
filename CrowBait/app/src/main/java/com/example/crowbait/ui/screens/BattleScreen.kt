@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +19,7 @@ import com.example.crowbait.ui.components.SelectCard
 var battleRound = 1
 val firstPlayerHand: Array<Int?> = arrayOfNulls(15)
 val secondPlayerHand: Array<Int?> = arrayOfNulls(15)
+
 @Composable
 fun BattleScreen() {
     Column(
@@ -55,31 +57,37 @@ fun BattleScreen() {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row() {
-                for (i in 1..5){
+            Row {
+                for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i)
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
                     }
 
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
-                for (i in 6..10){
+                for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i)
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
                     }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
-                for (i in 11..15){
+                for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i)
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
                     }
                 }
             }
         }
 
     }
+}
+
+fun getFirstPlayerHand(handNumber: Int) {
+    //配列の(n回戦)番目に出す手の数字を入れる
+    firstPlayerHand[battleRound-1] = handNumber
+    Log.d("debag", "firstPlayerHand:${firstPlayerHand}")
 }
 
 @Preview
