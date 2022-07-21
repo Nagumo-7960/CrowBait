@@ -20,7 +20,6 @@ import com.example.crowbait.ui.components.SelectCard
 var battleRound = 1
 var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
 var firstPlayerPoint = 0
-var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 
 @Composable
 fun FirstBattleScreen() {
@@ -45,8 +44,8 @@ fun FirstBattleScreen() {
         }
         Column(modifier = Modifier.padding(top = 40.dp)) {
             Row {
-                Card {
-                    Text("先行プレイヤー", fontSize = 30.sp)
+                Card (){
+                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = "先攻プレイヤー", fontSize = 30.sp)
                 }
                 Row(modifier = Modifier.padding(start = 10.dp)) {
                     Text(text = "得点：${firstPlayerPoint}", fontSize = 30.sp, color = Color.White)
