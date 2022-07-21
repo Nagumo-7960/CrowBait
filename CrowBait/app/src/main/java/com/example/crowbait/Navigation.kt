@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.crowbait.ui.screens.BattleScreen
+import com.example.crowbait.ui.screens.FirstBattleScreen
 import com.example.crowbait.ui.screens.HomeScreen
 
 @Composable
@@ -17,7 +17,7 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("battle") {
-            BattleScreen()
+            FirstBattleScreen()
         }
     }
 

@@ -18,11 +18,12 @@ import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
 var battleRound = 1
-val firstPlayerHand: Array<Int?> = arrayOfNulls(15)
-val secondPlayerHand: Array<Int?> = arrayOfNulls(15)
+var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
+var firstPlayerPoint = 0
+var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 
 @Composable
-fun BattleScreen() {
+fun FirstBattleScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -48,7 +49,7 @@ fun BattleScreen() {
                     Text("先行プレイヤー", fontSize = 30.sp)
                 }
                 Row(modifier = Modifier.padding(start = 10.dp)) {
-                    Text(text = "得点：0", fontSize = 30.sp, color = Color.White)
+                    Text(text = "得点：${firstPlayerPoint}", fontSize = 30.sp, color = Color.White)
                 }
             }
         }
@@ -94,5 +95,5 @@ fun getFirstPlayerHand(handNumber: Int) {
 @Preview
 @Composable
 fun PreviewBattleScreen() {
-    BattleScreen()
+    FirstBattleScreen()
 }
