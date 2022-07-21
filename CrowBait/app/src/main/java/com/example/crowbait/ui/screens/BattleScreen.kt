@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,7 +33,7 @@ fun BattleScreen() {
                 top = 20.dp
             )
         ) {
-            Text(text = "${battleRound}回戦", fontSize = 30.sp)
+            Text(text = "${battleRound}回戦", fontSize = 30.sp, color = Color.White)
         }
         Column(
             modifier = Modifier.padding(
@@ -47,7 +48,7 @@ fun BattleScreen() {
                     Text("先行プレイヤー", fontSize = 30.sp)
                 }
                 Row(modifier = Modifier.padding(start = 10.dp)) {
-                    Text(text = "得点：0", fontSize = 30.sp)
+                    Text(text = "得点：0", fontSize = 30.sp, color = Color.White)
                 }
             }
         }
@@ -87,7 +88,7 @@ fun BattleScreen() {
 fun getFirstPlayerHand(handNumber: Int) {
     //配列の(n回戦)番目に出す手の数字を入れる
     firstPlayerHand[battleRound-1] = handNumber
-    Log.d("debag", "firstPlayerHand:${firstPlayerHand}")
+    Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound-1]}")
 }
 
 @Preview
