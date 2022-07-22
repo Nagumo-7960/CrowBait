@@ -73,6 +73,6 @@ fun HomeScreen(onClick: () -> Unit) {
 fun PreviewHomeScreen() {
     val navController = rememberNavController()
     HomeScreen {
-        navController.navigate("battle")
+        navController.navigate("first")
     }
 }

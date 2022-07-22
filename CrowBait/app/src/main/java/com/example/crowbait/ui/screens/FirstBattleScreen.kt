@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
@@ -22,7 +23,7 @@ var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
 var firstPlayerPoint = 0
 
 @Composable
-fun FirstBattleScreen() {
+fun FirstBattleScreen(toSecond:() -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -61,7 +62,7 @@ fun FirstBattleScreen() {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                     }
 
                 }
@@ -69,14 +70,14 @@ fun FirstBattleScreen() {
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                     }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                     }
                 }
             }
@@ -85,14 +86,19 @@ fun FirstBattleScreen() {
     }
 }
 
-fun getFirstPlayerHand(handNumber: Int) {
+fun getFirstPlayerHand(handNumber: Int,toSecond: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     firstPlayerHand[battleRound-1] = handNumber
     Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound-1]}")
+    toSecond()
+
 }
 
 @Preview
 @Composable
 fun PreviewBattleScreen() {
-    FirstBattleScreen()
+    val navController = rememberNavController()
+    FirstBattleScreen{
+        navController.navigate("second")
+    }
 }
