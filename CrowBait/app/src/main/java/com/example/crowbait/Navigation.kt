@@ -25,7 +25,9 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("second") {
-            SecondBattleScreen()
+            SecondBattleScreen(){
+                navController.navigate("result")
+            }
         }
 
         composable("result") {

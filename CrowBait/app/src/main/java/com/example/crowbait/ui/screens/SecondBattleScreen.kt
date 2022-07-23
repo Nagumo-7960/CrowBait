@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
@@ -21,7 +22,7 @@ var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0
 
 @Composable
-fun SecondBattleScreen() {
+fun SecondBattleScreen(toResult:() -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -60,7 +61,7 @@ fun SecondBattleScreen() {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
 
                 }
@@ -68,14 +69,14 @@ fun SecondBattleScreen() {
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
                 }
             }
@@ -87,12 +88,15 @@ fun SecondBattleScreen() {
 fun getSecondPlayerHand(handNumber: Int,toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayerHand[battleRound-1] = handNumber
-    Log.d("debag", "firstPlayerHand:${secondPlayerHand[battleRound-1]}")
+    Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound-1]}")
     toResult()
 }
 
 @Preview
 @Composable
 fun PreviewSecondBattleScreen(){
-    SecondBattleScreen()
+    val navController = rememberNavController()
+    SecondBattleScreen{
+        navController.navigate("result")
+    }
 }
