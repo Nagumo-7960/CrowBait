@@ -18,12 +18,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.SelectCard
 
-var battleRound = 1
-var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
-var firstPlayerPoint = 0
+var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
+var secondPlayerPoint = 0
 
 @Composable
-fun FirstBattleScreen(toSecond:() -> Unit) {
+fun SecondBattleScreen(toResult:() -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -46,10 +45,10 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
         Column(modifier = Modifier.padding(top = 40.dp)) {
             Row {
                 Card (){
-                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = "先攻プレイヤー", fontSize = 30.sp)
+                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = "後攻プレイヤー", fontSize = 30.sp)
                 }
                 Row(modifier = Modifier.padding(start = 10.dp)) {
-                    Text(text = "得点：${firstPlayerPoint}", fontSize = 30.sp, color = Color.White)
+                    Text(text = "得点：${secondPlayerPoint}", fontSize = 30.sp, color = Color.White)
                 }
             }
         }
@@ -62,7 +61,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
 
                 }
@@ -70,14 +69,14 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
                     }
                 }
             }
@@ -86,19 +85,18 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
     }
 }
 
-fun getFirstPlayerHand(handNumber: Int,toSecond: () -> Unit) {
+fun getSecondPlayerHand(handNumber: Int,toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
-    firstPlayerHand[battleRound-1] = handNumber
-    Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound-1]}")
-    toSecond()
-
+    secondPlayerHand[battleRound-1] = handNumber
+    Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound-1]}")
+    toResult()
 }
 
 @Preview
 @Composable
-fun PreviewBattleScreen() {
+fun PreviewSecondBattleScreen(){
     val navController = rememberNavController()
-    FirstBattleScreen{
-        navController.navigate("second")
+    SecondBattleScreen{
+        navController.navigate("result")
     }
 }
