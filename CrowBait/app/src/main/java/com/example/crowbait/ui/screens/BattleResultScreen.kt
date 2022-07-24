@@ -30,9 +30,9 @@ fun BattleResultScreen() {
             DeckCard(deckCardNumber = 1)
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(300.dp, 150.dp)) {
+            Card(modifier = Modifier.size(340.dp, 90.dp)) {
                 Box(contentAlignment = Alignment.Center) {
-                    Text(text = "先攻プレイヤーの得点", fontSize = 30.sp)
+                    Text(modifier = Modifier.padding(start = 20.dp, end = 20.dp),text = "先攻プレイヤーの得点", fontSize = 30.sp)
                 }
             }
         }
