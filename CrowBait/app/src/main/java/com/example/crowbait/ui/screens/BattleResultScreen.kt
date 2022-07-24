@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.example.crowbait.ui.components.DeckCard
 
 @Composable
-fun BattleResultScreen(){
+fun BattleResultScreen() {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(
             modifier = Modifier.padding(
@@ -30,9 +30,19 @@ fun BattleResultScreen(){
             DeckCard(deckCardNumber = 1)
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(300.dp,150.dp)) {
-                Box(contentAlignment = Alignment.Center){
+            Card(modifier = Modifier.size(300.dp, 150.dp)) {
+                Box(contentAlignment = Alignment.Center) {
                     Text(text = "先攻プレイヤーの得点", fontSize = 30.sp)
+                }
+            }
+        }
+        Column(modifier = Modifier.padding(top = 30.dp)) {
+            Row {
+                Column() {
+                    DeckCard(deckCardNumber = firstPlayerHand[battleRound - 1])
+                }
+                Column(modifier = Modifier.padding(start = 30.dp)) {
+                    DeckCard(deckCardNumber = secondPlayerHand[battleRound - 1])
                 }
             }
         }
@@ -41,6 +51,6 @@ fun BattleResultScreen(){
 
 @Preview
 @Composable
-fun PreviewBattleResultScreen(){
+fun PreviewBattleResultScreen() {
     BattleResultScreen()
 }
