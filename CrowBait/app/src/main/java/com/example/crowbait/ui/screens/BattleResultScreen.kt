@@ -42,14 +42,14 @@ fun BattleResultScreen() {
                     DeckCard(deckCardNumber = firstPlayerHand[battleRound - 1])
                     Column(modifier = Modifier.padding(top = 10.dp)) {
                         Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                        Text(text = "得点:0", fontSize = 15.sp, color = Color.White)
+                        Text(text = "得点:${firstPlayerPoint}", fontSize = 15.sp, color = Color.White)
                     }
                 }
                 Column(modifier = Modifier.padding(start = 30.dp)) {
                     DeckCard(deckCardNumber = secondPlayerHand[battleRound - 1])
                     Column(modifier = Modifier.padding(top = 10.dp)) {
                         Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                        Text(text = "得点:0", fontSize = 15.sp, color = Color.White)
+                        Text(text = "得点:${secondPlayerPoint}", fontSize = 15.sp, color = Color.White)
                     }
                 }
             }
