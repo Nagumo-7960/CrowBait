@@ -14,6 +14,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
 
+val firstWinText = "先攻プレイヤーの得点"
+val secondWinText = "後攻プレイヤーの得点"
+
+
 @Composable
 fun BattleResultScreen(toFirst:() -> Unit) {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -34,11 +38,25 @@ fun BattleResultScreen(toFirst:() -> Unit) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card(modifier = Modifier.size(340.dp, 90.dp)) {
                 Box(contentAlignment = Alignment.Center) {
-                    Text(
-                        modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                        text = "先攻プレイヤーの得点",
-                        fontSize = 30.sp
-                    )
+                    if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
+                        Text(
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                            text = "先攻プレイヤーの得点",
+                            fontSize = 25.sp
+                        )
+                    }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
+                        Text(
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                            text = "後攻プレイヤーの得点",
+                            fontSize = 25.sp
+                        )
+                    }else{
+                        Text(
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                            text = "引き分け",
+                            fontSize = 25.sp
+                        )
+                    }
                 }
             }
         }
@@ -65,10 +83,10 @@ fun BattleResultScreen(toFirst:() -> Unit) {
             }
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(70.dp, 40.dp)
+            Card(modifier = Modifier.size(80.dp, 40.dp)
                 .clickable(
                     enabled = true,
-                    onClick = toFirst
+                    onClick = { roundPlus { toFirst() } }
                 )
             ) {
                 Box(contentAlignment = Alignment.Center){
@@ -81,6 +99,11 @@ fun BattleResultScreen(toFirst:() -> Unit) {
             }
         }
     }
+}
+
+fun roundPlus(toFirst: () -> Unit){
+    battleRound++
+    toFirst()
 }
 
 @Preview
