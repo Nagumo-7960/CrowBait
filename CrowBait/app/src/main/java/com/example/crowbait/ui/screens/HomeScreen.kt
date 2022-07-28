@@ -1,6 +1,5 @@
 package com.example.crowbait.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -13,8 +12,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
+var deckNumberSet = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+var deckNumber = 1
+
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
+    setDeckNumber()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -64,6 +67,11 @@ fun HomeScreen(onClick: () -> Unit) {
         }
 
     }
+}
+
+fun setDeckNumber(){
+    deckNumberSet.shuffle()
+    deckNumber = deckNumberSet[battleRound-1]
 }
 
 

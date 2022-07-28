@@ -16,13 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.NonSelectCard
 import com.example.crowbait.ui.components.SelectCard
 
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0
 
 @Composable
-fun SecondBattleScreen(toResult:() -> Unit) {
+fun SecondBattleScreen(toResult: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -40,12 +41,16 @@ fun SecondBattleScreen(toResult:() -> Unit) {
                 top = 20.dp
             )
         ) {
-            DeckCard(deckCardNumber = 1)
+            DeckCard(deckCardNumber = deckNumber)
         }
         Column(modifier = Modifier.padding(top = 40.dp)) {
             Row {
-                Card (){
-                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = "後攻プレイヤー", fontSize = 30.sp)
+                Card {
+                    Text(
+                        modifier = Modifier.padding(start = 10.dp, end = 10.dp),
+                        text = "後攻プレイヤー",
+                        fontSize = 30.sp
+                    )
                 }
                 Row(modifier = Modifier.padding(start = 10.dp)) {
                     Text(text = "得点：${secondPlayerPoint}", fontSize = 30.sp, color = Color.White)
@@ -61,22 +66,45 @@ fun SecondBattleScreen(toResult:() -> Unit) {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
+                        if (secondPlayerHand.contains(i)) {
+                            NonSelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        } else {
+                            SelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        }
                     }
-
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
+                        if (secondPlayerHand.contains(i)) {
+                            NonSelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        } else {
+                            SelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        }
                     }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getSecondPlayerHand(i,toResult)})
+                        if (secondPlayerHand.contains(i)) {
+                            NonSelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        } else {
+                            SelectCard(
+                                selectCardNumber = i,
+                                onClick = { getSecondPlayerHand(i, toResult) })
+                        }
                     }
                 }
             }
@@ -85,18 +113,28 @@ fun SecondBattleScreen(toResult:() -> Unit) {
     }
 }
 
-fun getSecondPlayerHand(handNumber: Int,toResult: () -> Unit) {
+fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
-    secondPlayerHand[battleRound-1] = handNumber
-    Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound-1]}")
+    secondPlayerHand[battleRound - 1] = handNumber
+    Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound - 1]}")
+    battleResultCheck()
     toResult()
+}
+
+fun battleResultCheck() {
+    if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+        firstPlayerPoint += deckNumber
+    }
+    if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+        secondPlayerPoint += deckNumber
+    }
 }
 
 @Preview
 @Composable
-fun PreviewSecondBattleScreen(){
+fun PreviewSecondBattleScreen() {
     val navController = rememberNavController()
-    SecondBattleScreen{
+    SecondBattleScreen {
         navController.navigate("result")
     }
 }

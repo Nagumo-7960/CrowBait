@@ -16,11 +16,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.NonSelectCard
 import com.example.crowbait.ui.components.SelectCard
 
 var battleRound = 1
 var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
 var firstPlayerPoint = 0
+
 
 @Composable
 fun FirstBattleScreen(toSecond:() -> Unit) {
@@ -41,7 +43,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                 top = 20.dp
             )
         ) {
-            DeckCard(deckCardNumber = 1)
+            DeckCard(deckCardNumber = deckNumber)
         }
         Column(modifier = Modifier.padding(top = 40.dp)) {
             Row {
@@ -62,7 +64,11 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }
                     }
 
                 }
@@ -70,15 +76,21 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
-                    }
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }                    }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
-                    }
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }                    }
                 }
             }
         }

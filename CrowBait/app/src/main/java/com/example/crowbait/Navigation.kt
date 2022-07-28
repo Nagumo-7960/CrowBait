@@ -31,8 +31,9 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("result") {
-            BattleResultScreen()
-        }
+            BattleResultScreen{
+                navController.navigate("first")
+            }        }
     }
 
 }
