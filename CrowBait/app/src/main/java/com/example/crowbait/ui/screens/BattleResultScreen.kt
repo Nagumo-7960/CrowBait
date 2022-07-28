@@ -13,10 +13,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.FinalRoundCard
 import com.example.crowbait.ui.components.NextRoundCard
 
 @Composable
-fun BattleResultScreen(toFirst:() -> Unit) {
+fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(
             modifier = Modifier.padding(
@@ -80,9 +81,15 @@ fun BattleResultScreen(toFirst:() -> Unit) {
             }
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            NextRoundCard(
-                onClick = {toFirst()}
-            )
+            if(battleRound == deckNumberSet.size){
+                FinalRoundCard {
+                    toFinal()
+                }
+            }else{
+                NextRoundCard(
+                    onClick = {toFirst()}
+                )
+            }
         }
     }
 }
@@ -97,7 +104,8 @@ fun roundPlus(toFirst: () -> Unit){
 @Composable
 fun PreviewBattleResultScreen() {
     val navController = rememberNavController()
-    BattleResultScreen{
-        navController.navigate("first")
-    }
+    BattleResultScreen(
+        toFirst = {navController.navigate("first")},
+        toFinal = {navController.navigate("final")}
+    )
 }
