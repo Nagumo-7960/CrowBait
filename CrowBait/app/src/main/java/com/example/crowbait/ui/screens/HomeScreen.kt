@@ -11,13 +11,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+//test用
+//var deckNumberSet = arrayOf(-1,1)
 
-var deckNumberSet = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
 
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
+    resetSetting()
     setDeckNumber()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -70,10 +74,17 @@ fun HomeScreen(onClick: () -> Unit) {
 }
 
 fun setDeckNumber(){
-    deckNumberSet.shuffle()
     deckNumber = deckNumberSet[battleRound-1]
 }
 
+fun resetSetting(){
+    deckNumberSet.shuffle()
+    battleRound = 1
+    firstPlayerPoint = 0
+    secondPlayerPoint = 0
+    firstPlayerHand= arrayOfNulls(15)
+    secondPlayerHand= arrayOfNulls(15)
+}
 
 
 @Preview
