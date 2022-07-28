@@ -14,10 +14,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
 
-val firstWinText = "先攻プレイヤーの得点"
-val secondWinText = "後攻プレイヤーの得点"
-
-
 @Composable
 fun BattleResultScreen(toFirst:() -> Unit) {
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
