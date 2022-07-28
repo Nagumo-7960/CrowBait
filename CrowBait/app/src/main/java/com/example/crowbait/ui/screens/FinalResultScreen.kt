@@ -19,7 +19,7 @@ fun FinalResultScreen(toReset:() -> Unit){
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card (modifier = Modifier.size(270.dp,100.dp)){
                 Box(contentAlignment = Alignment.Center) {
-                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = "先攻プレイヤーの勝利", fontSize = 35.sp)
+                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
                 }
             }
         }
