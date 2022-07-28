@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 //test用
-var deckNumberSet = arrayOf(-1,5)
+var deckNumberSet = arrayOf(-1,1)
 
 //var deckNumberSet = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
 var deckNumber = 1
@@ -74,11 +74,11 @@ fun HomeScreen(onClick: () -> Unit) {
 }
 
 fun setDeckNumber(){
-    deckNumberSet.shuffle()
     deckNumber = deckNumberSet[battleRound-1]
 }
 
 fun resetSetting(){
+    deckNumberSet.shuffle()
     battleRound = 1
     firstPlayerPoint = 0
     secondPlayerPoint = 0

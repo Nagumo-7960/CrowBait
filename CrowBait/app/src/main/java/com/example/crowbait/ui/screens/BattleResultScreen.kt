@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -18,6 +19,7 @@ import com.example.crowbait.ui.components.NextRoundCard
 
 @Composable
 fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
+    Log.d("deckNumber", "deckNumber:${deckNumber}")
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(
             modifier = Modifier.padding(
@@ -36,25 +38,48 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card(modifier = Modifier.size(340.dp, 90.dp)) {
                 Box(contentAlignment = Alignment.Center) {
-                    if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
-                        Text(
-                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                            text = "先攻プレイヤーの得点",
-                            fontSize = 25.sp
-                        )
-                    }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
-                        Text(
-                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                            text = "後攻プレイヤーの得点",
-                            fontSize = 25.sp
-                        )
+                    if(deckNumber>0){
+                        if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "先攻プレイヤーの得点",
+                                fontSize = 25.sp
+                            )
+                        }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "後攻プレイヤーの得点",
+                                fontSize = 25.sp
+                            )
+                        }else{
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "引き分け",
+                                fontSize = 25.sp
+                            )
+                        }
                     }else{
-                        Text(
-                            modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                            text = "引き分け",
-                            fontSize = 25.sp
-                        )
+                        if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "後攻プレイヤーの得点",
+                                fontSize = 25.sp
+                            )
+                        }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "先攻プレイヤーの得点",
+                                fontSize = 25.sp
+                            )
+                        }else{
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "引き分け",
+                                fontSize = 25.sp
+                            )
+                        }
                     }
+
                 }
             }
         }
