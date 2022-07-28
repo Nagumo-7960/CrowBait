@@ -18,7 +18,7 @@ fun NextRoundCard(onClick:() -> Unit){
     Card(modifier = Modifier.size(80.dp, 40.dp)
         .clickable(
             enabled = true,
-            onClick = { roundPlus { onClick} }
+            onClick = { roundPlus { onClick()} }
         )
     ) {
         Box(contentAlignment = Alignment.Center){

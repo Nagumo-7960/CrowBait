@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.NextRoundCard
 
 @Composable
 fun BattleResultScreen(toFirst:() -> Unit) {
@@ -79,20 +80,9 @@ fun BattleResultScreen(toFirst:() -> Unit) {
             }
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(80.dp, 40.dp)
-                .clickable(
-                    enabled = true,
-                    onClick = { roundPlus { toFirst() } }
-                )
-            ) {
-                Box(contentAlignment = Alignment.Center){
-                    Text(
-                        modifier = Modifier.padding(start = 5.dp, end = 5.dp),
-                        text = "次へ",
-                        fontSize = 20.sp
-                    )
-                }
-            }
+            NextRoundCard(
+                onClick = {toFirst()}
+            )
         }
     }
 }
