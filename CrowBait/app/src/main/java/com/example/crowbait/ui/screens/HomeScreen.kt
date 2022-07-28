@@ -70,8 +70,8 @@ fun HomeScreen(onClick: () -> Unit) {
 }
 
 fun setDeckNumber(){
-    val random = (1..5).random()
-    deckNumber = deckNumberSet[random]
+    deckNumberSet.shuffle()
+    deckNumber = deckNumberSet[battleRound-1]
 }
 
 
