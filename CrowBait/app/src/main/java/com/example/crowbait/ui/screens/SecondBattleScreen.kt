@@ -95,10 +95,10 @@ fun getSecondPlayerHand(handNumber: Int,toResult: () -> Unit) {
 
 fun battleResultCheck(){
     if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
-        firstPlayerPoint ++
+        firstPlayerPoint += deckNumber
     }
     if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
-        secondPlayerPoint ++
+        secondPlayerPoint += deckNumber
     }
 }
 
