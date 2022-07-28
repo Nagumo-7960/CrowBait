@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.components.DeckCard
+import com.example.crowbait.ui.components.NonSelectCard
 import com.example.crowbait.ui.components.SelectCard
 
 var battleRound = 1
@@ -63,7 +64,11 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }
                     }
 
                 }
@@ -71,15 +76,21 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
-                    }
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }                    }
                 }
             }
             Row(modifier = Modifier.padding(top = 20.dp)) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
-                        SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
-                    }
+                        if(firstPlayerHand.contains(i)){
+                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }else{
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                        }                    }
                 }
             }
         }
