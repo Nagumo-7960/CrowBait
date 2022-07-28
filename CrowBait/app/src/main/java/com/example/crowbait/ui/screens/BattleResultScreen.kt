@@ -104,6 +104,7 @@ fun BattleResultScreen(toFirst:() -> Unit) {
 fun roundPlus(toFirst: () -> Unit){
     battleRound++
     toFirst()
+    setDeckNumber()
 }
 
 @Preview
