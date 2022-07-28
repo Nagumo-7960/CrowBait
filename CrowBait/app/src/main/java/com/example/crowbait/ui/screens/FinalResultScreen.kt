@@ -10,9 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.ui.components.NewGameCard
 
 @Composable
-fun FinalResultScreen(){
+fun FinalResultScreen(toReset:() -> Unit){
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card (modifier = Modifier.size(270.dp,100.dp)){
@@ -35,11 +37,19 @@ fun FinalResultScreen(){
                     Text(text = "得点：${secondPlayerPoint}", fontSize = 50.sp,color = Color.White)
                 }
         }
+        Column(modifier = Modifier.padding(top = 30.dp)) {
+            NewGameCard {
+                toReset()
+            }
+        }
     }
 }
 
 @Preview
 @Composable
 fun PreviewFinalResultScreen(){
-    FinalResultScreen()
+    val navController = rememberNavController()
+    FinalResultScreen{
+        navController.navigate("home")
+    }
 }

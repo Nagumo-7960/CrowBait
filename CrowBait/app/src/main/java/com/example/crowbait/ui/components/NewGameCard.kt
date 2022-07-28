@@ -11,11 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.crowbait.ui.screens.battleRound
+import com.example.crowbait.ui.screens.firstPlayerPoint
 import com.example.crowbait.ui.screens.roundPlus
+import com.example.crowbait.ui.screens.secondPlayerPoint
 
 @Composable
 fun NewGameCard(onClick:() -> Unit){
-    Card(modifier = Modifier.size(80.dp, 40.dp)
+    Card(modifier = Modifier.size(120.dp, 40.dp)
         .clickable(
             enabled = true,
             onClick =  { onClick()}
@@ -30,3 +33,4 @@ fun NewGameCard(onClick:() -> Unit){
         }
     }
 }
+

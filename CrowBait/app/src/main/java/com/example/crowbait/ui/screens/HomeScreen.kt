@@ -19,7 +19,9 @@ var deckNumber = 1
 
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
+    resetSetting()
     setDeckNumber()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -76,6 +78,11 @@ fun setDeckNumber(){
     deckNumber = deckNumberSet[battleRound-1]
 }
 
+fun resetSetting(){
+    battleRound = 1
+    firstPlayerPoint = 0
+    secondPlayerPoint = 0
+}
 
 
 @Preview

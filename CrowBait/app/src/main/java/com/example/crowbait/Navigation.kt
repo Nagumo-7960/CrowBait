@@ -29,13 +29,15 @@ fun Navigation(navController: NavHostController) {
 
         composable("result") {
             BattleResultScreen(
-                toFirst = {navController.navigate("first")},
-                toFinal = {navController.navigate("final")}
+                toFirst = { navController.navigate("first") },
+                toFinal = { navController.navigate("final") }
             )
         }
 
         composable("final") {
-            FinalResultScreen()
+            FinalResultScreen {
+                navController.navigate("home")
+            }
         }
     }
 
