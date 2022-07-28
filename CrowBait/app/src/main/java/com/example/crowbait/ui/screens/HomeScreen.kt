@@ -13,8 +13,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
+var deckNumberSet = arrayOf(1,2,3,4,5)
+var deckNumber = 1
+
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
+    setInitialDeck()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -64,6 +68,11 @@ fun HomeScreen(onClick: () -> Unit) {
         }
 
     }
+}
+
+fun setInitialDeck(){
+    val random = (1..5).random()
+    deckNumber = deckNumberSet[random]
 }
 
 

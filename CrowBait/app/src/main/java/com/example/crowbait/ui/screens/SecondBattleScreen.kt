@@ -40,7 +40,7 @@ fun SecondBattleScreen(toResult:() -> Unit) {
                 top = 20.dp
             )
         ) {
-            DeckCard(deckCardNumber = 1)
+            DeckCard(deckCardNumber = deckNumber)
         }
         Column(modifier = Modifier.padding(top = 40.dp)) {
             Row {

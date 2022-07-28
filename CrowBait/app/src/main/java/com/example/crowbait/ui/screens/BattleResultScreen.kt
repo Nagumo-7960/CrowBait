@@ -33,7 +33,7 @@ fun BattleResultScreen(toFirst:() -> Unit) {
                 top = 20.dp
             )
         ) {
-            DeckCard(deckCardNumber = 1)
+            DeckCard(deckCardNumber = deckNumber)
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card(modifier = Modifier.size(340.dp, 90.dp)) {
