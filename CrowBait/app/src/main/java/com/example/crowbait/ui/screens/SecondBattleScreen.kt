@@ -122,12 +122,22 @@ fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit) {
 }
 
 fun finalBattleResultCheck() {
-    if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
-        firstPlayerPoint += deckNumber
+    if (deckNumber>0){
+        if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+            firstPlayerPoint += deckNumber
+        }
+        if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+            secondPlayerPoint += deckNumber
+        }
+    }else{
+        if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+            secondPlayerPoint += deckNumber
+        }
+        if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+            firstPlayerPoint += deckNumber
+        }
     }
-    if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
-        secondPlayerPoint += deckNumber
-    }
+
 }
 
 @Preview
