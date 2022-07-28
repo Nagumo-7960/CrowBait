@@ -82,6 +82,8 @@ fun resetSetting(){
     battleRound = 1
     firstPlayerPoint = 0
     secondPlayerPoint = 0
+    firstPlayerHand= arrayOfNulls(15)
+    secondPlayerHand= arrayOfNulls(15)
 }
 
 
