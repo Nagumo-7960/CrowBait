@@ -4,36 +4,38 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.crowbait.ui.screens.BattleResultScreen
-import com.example.crowbait.ui.screens.FirstBattleScreen
-import com.example.crowbait.ui.screens.HomeScreen
-import com.example.crowbait.ui.screens.SecondBattleScreen
+import com.example.crowbait.ui.screens.*
 
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
-            HomeScreen(){
+            HomeScreen {
                 navController.navigate("first")
             }
         }
 
         composable("first") {
-            FirstBattleScreen(){
+            FirstBattleScreen {
                 navController.navigate("second")
             }
         }
 
         composable("second") {
-            SecondBattleScreen(){
+            SecondBattleScreen {
                 navController.navigate("result")
             }
         }
 
         composable("result") {
-            BattleResultScreen{
+            BattleResultScreen {
                 navController.navigate("first")
-            }        }
+            }
+        }
+
+        composable("final") {
+            FinalResultScreen()
+        }
     }
 
 }
