@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -14,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun ConfirmationCard() {
+fun ConfirmationCard(onClick:() -> Unit) {
     Card(modifier = Modifier.size(400.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
@@ -24,14 +25,37 @@ fun ConfirmationCard() {
             Text(text = "このカードを選択していいですか？", fontSize = 20.sp)
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Card(modifier = Modifier.size(200.dp, 100.dp)) {
+                    Card(
+                        modifier = Modifier
+                            .size(200.dp, 100.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = onClick
+                            )
+                    ) {
                         Box(contentAlignment = Alignment.Center) {
-                            Text(text = "キャンセル", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = Color.Blue)
+                            Text(
+                                text = "キャンセル",
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Blue
+                            )
                         }
                     }
-                    Card(modifier = Modifier.size(200.dp, 100.dp)) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text(text = "決定", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = Color.Red)
+                    Card(
+                        modifier = Modifier
+                            .size(200.dp, 100.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = onClick
+                            )
+                    ) {                        Box(contentAlignment = Alignment.Center) {
+                            Text(
+                                text = "決定",
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Red
+                            )
                         }
                     }
                 }
