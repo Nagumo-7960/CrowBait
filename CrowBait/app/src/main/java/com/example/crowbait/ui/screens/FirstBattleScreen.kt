@@ -28,6 +28,7 @@ var firstPlayerPoint = 0
 @Composable
 fun FirstBattleScreen(toSecond:() -> Unit) {
     var confirmation by remember { mutableStateOf(false) }
+    var cardSet = 1
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -65,7 +66,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
         ) {
             if(confirmation==true){
                 ConfirmationCard {
-                    toSecond()
+                    getFirstPlayerHand(cardSet,toSecond)
                 }
             }
 
@@ -75,7 +76,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            SelectCard(selectCardNumber = i, onClick = {confirmation=true})
                         }
                     }
 
@@ -87,7 +88,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            SelectCard(selectCardNumber = i, onClick = {confirmation=true})
                         }                    }
                 }
             }
@@ -111,7 +112,6 @@ fun getFirstPlayerHand(handNumber: Int,toSecond: () -> Unit) {
     firstPlayerHand[battleRound-1] = handNumber
     Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound-1]}")
     toSecond()
-
 }
 
 @Preview
