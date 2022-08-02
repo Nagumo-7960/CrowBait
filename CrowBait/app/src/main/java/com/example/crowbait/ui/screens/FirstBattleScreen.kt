@@ -73,7 +73,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
                         if(firstPlayerHand.contains(i)){
-                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            NonSelectCard(selectCardNumber = i)
                         }else{
                             SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                         }
@@ -85,7 +85,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                 for (i in 6..10) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
                         if(firstPlayerHand.contains(i)){
-                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            NonSelectCard(selectCardNumber = i)
                         }else{
                             SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                         }                    }
@@ -95,7 +95,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                 for (i in 11..15) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
                         if(firstPlayerHand.contains(i)){
-                            NonSelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            NonSelectCard(selectCardNumber = i)
                         }else{
                             SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                         }                    }
