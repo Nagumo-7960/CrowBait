@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.ui.components.ConfirmationCard
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.NonSelectCard
 import com.example.crowbait.ui.components.SelectCard
@@ -61,6 +62,9 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            ConfirmationCard {
+                toSecond()
+            }
             Row {
                 for (i in 1..5) {
                     Column(modifier = Modifier.padding(start = 10.dp)) {

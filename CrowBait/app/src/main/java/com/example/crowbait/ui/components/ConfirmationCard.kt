@@ -65,8 +65,8 @@ fun ConfirmationCard(onClick:() -> Unit) {
     }
 }
 
-@Preview
-@Composable
-fun PreviewConfirmationCard() {
-    ConfirmationCard()
-}
+//@Preview
+//@Composable
+//fun PreviewConfirmationCard() {
+//    ConfirmationCard()
+//}
