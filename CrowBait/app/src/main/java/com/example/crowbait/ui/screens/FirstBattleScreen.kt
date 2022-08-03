@@ -66,7 +66,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
         ) {
             if(confirmation==true){
                 ConfirmationCard {
-                    getFirstPlayerHand(cardSet,toSecond)
+
                 }
             }
 
@@ -76,7 +76,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {confirmation=true})
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                         }
                     }
 
@@ -88,7 +88,7 @@ fun FirstBattleScreen(toSecond:() -> Unit) {
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {confirmation=true})
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
                         }                    }
                 }
             }
