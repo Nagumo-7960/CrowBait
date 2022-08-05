@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.components.ConfirmationCard
 import com.example.crowbait.ui.components.DeckCard
 import com.example.crowbait.ui.components.NonSelectCard
@@ -26,8 +27,8 @@ var firstPlayerPoint = 0
 
 
 @Composable
-fun FirstBattleScreen(toSecond:() -> Unit) {
-    var confirmation by remember { mutableStateOf(false) }
+fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel) {
+    val isConfirmation = viewModel.confirmation.observeAsState().value
     var cardSet = 1
     Column(
         modifier = Modifier
