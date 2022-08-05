@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -65,7 +66,7 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if(confirmation==true){
+            if(isConfirmation==true){
                 ConfirmationCard {
 
                 }
@@ -77,7 +78,7 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,viewModel)})
                         }
                     }
 
@@ -89,7 +90,7 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,viewModel)})
                         }                    }
                 }
             }
@@ -99,7 +100,7 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
                         if(firstPlayerHand.contains(i)){
                             NonSelectCard(selectCardNumber = i)
                         }else{
-                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,toSecond)})
+                            SelectCard(selectCardNumber = i, onClick = {getFirstPlayerHand(i,viewModel)})
                         }                    }
                 }
             }
@@ -108,18 +109,18 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
     }
 }
 
-fun getFirstPlayerHand(handNumber: Int,toSecond: () -> Unit) {
+fun getFirstPlayerHand(handNumber: Int,viewModel: FirstBattleScreenViewModel) {
     //配列の(n回戦)番目に出す手の数字を入れる
     firstPlayerHand[battleRound-1] = handNumber
     Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound-1]}")
-    toSecond()
+    viewModel.changeConfirmation()
 }
 
-@Preview
-@Composable
-fun PreviewBattleScreen() {
-    val navController = rememberNavController()
-    FirstBattleScreen{
-        navController.navigate("second")
-    }
-}
+//@Preview
+//@Composable
+//fun PreviewBattleScreen() {
+//    val navController = rememberNavController()
+//    FirstBattleScreen{
+//        navController.navigate("second")
+//    }
+//}

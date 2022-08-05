@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.screens.*
 
 @Composable
@@ -16,9 +17,11 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("first") {
-            FirstBattleScreen {
-                navController.navigate("second")
-            }
+            val viewModel:FirstBattleScreenViewModel = FirstBattleScreenViewModel()
+            FirstBattleScreen (
+               toSecond ={ navController.navigate("second")},
+                viewModel = viewModel
+            )
         }
 
         composable("second") {
