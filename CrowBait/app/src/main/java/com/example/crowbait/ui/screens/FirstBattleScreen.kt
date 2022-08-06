@@ -67,9 +67,10 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if(isConfirmation==true){
-                ConfirmationCard {
-
-                }
+                ConfirmationCard(
+                    onClick = {toSecond()},
+                    deckCardNumber = firstPlayerHand[battleRound-1]
+                )
             }
 
             Row {

@@ -13,16 +13,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun ConfirmationCard(onClick:() -> Unit) {
+fun ConfirmationCard(onClick: () -> Unit, deckCardNumber: Int?) {
     Card(modifier = Modifier.size(400.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "このカードを選択していいですか？", fontSize = 20.sp)
+            Text(text = "${deckCardNumber}を選択していいですか？", fontSize = 20.sp)
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Card(
@@ -49,7 +50,8 @@ fun ConfirmationCard(onClick:() -> Unit) {
                                 enabled = true,
                                 onClick = onClick
                             )
-                    ) {                        Box(contentAlignment = Alignment.Center) {
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
                             Text(
                                 text = "決定",
                                 fontSize = 30.sp,
@@ -65,8 +67,14 @@ fun ConfirmationCard(onClick:() -> Unit) {
     }
 }
 
-//@Preview
-//@Composable
-//fun PreviewConfirmationCard() {
-//    ConfirmationCard()
-//}
+@Preview
+@Composable
+fun PreviewConfirmationCard() {
+    val navController = rememberNavController()
+    ConfirmationCard(
+        onClick = {
+            navController.navigate("battle")
+        },
+        deckCardNumber = 1
+    )
+}
