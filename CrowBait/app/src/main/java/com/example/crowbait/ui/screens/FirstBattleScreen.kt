@@ -68,7 +68,8 @@ fun FirstBattleScreen(toSecond:() -> Unit, viewModel:FirstBattleScreenViewModel)
         ) {
             if(isConfirmation==true){
                 ConfirmationCard(
-                    onClick = {toSecond()},
+                    determine_button = {toSecond()},
+                    cancel_button = {viewModel.changeConfirmation()},
                     deckCardNumber = firstPlayerHand[battleRound-1]
                 )
             }
