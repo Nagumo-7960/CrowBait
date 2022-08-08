@@ -25,9 +25,11 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("second") {
-            SecondBattleScreen {
-                navController.navigate("result")
-            }
+            val viewModel:FirstBattleScreenViewModel = FirstBattleScreenViewModel()
+            SecondBattleScreen (
+                toResult ={navController.navigate("result")},
+                viewModel = viewModel
+                )
         }
 
         composable("result") {
