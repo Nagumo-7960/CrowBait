@@ -9,10 +9,8 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.components.ConfirmationCard
 import com.example.crowbait.ui.components.DeckCard
@@ -21,6 +19,7 @@ import com.example.crowbait.ui.components.SelectCard
 
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0
+var secondCardSet = 1
 
 @Composable
 fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewModel) {
@@ -79,7 +78,7 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
                             } else {
                                 SelectCard(
                                     selectCardNumber = i,
-                                    onClick = { getSecondPlayerHand(i, viewModel) })
+                                    onClick = { secondChangeConfirmation(i, viewModel) })
                             }
                         }
                     }
@@ -94,7 +93,7 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
                             } else {
                                 SelectCard(
                                     selectCardNumber = i,
-                                    onClick = { getSecondPlayerHand(i, viewModel) })
+                                    onClick = { secondChangeConfirmation(i, viewModel) })
                             }
                         }
                     }
@@ -109,7 +108,7 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
                             } else {
                                 SelectCard(
                                     selectCardNumber = i,
-                                    onClick = { getSecondPlayerHand(i, viewModel) })
+                                    onClick = { secondChangeConfirmation(i, viewModel) })
                             }
                         }
                     }
@@ -119,19 +118,23 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
         }
         if (isConfirmation == true) {
             ConfirmationCard(
-                determine_button = { toResult() },
+                determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
                 cancel_button = { viewModel.changeConfirmation() },
-                deckCardNumber = secondPlayerHand[battleRound - 1]
+                deckCardNumber = secondCardSet
             )
         }
     }
 }
 
-fun getSecondPlayerHand(handNumber: Int, viewModel: FirstBattleScreenViewModel) {
+fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayerHand[battleRound - 1] = handNumber
     Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound - 1]}")
-    finalBattleResultCheck()
+    toResult()
+}
+
+fun secondChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewModel){
+    secondCardSet = handNumber
     viewModel.changeConfirmation()
 }
 
