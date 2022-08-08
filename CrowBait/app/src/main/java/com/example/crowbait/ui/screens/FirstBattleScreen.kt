@@ -117,7 +117,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
             ConfirmationCard(
                 determine_button = { getFirstPlayerHand(cardSet,toSecond) },
                 cancel_button = { viewModel.changeConfirmation() },
-                deckCardNumber = firstPlayerHand[battleRound - 1]
+                deckCardNumber = cardSet
             )
         }
     }
