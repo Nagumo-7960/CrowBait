@@ -19,9 +19,15 @@ fun Navigation(navController: NavHostController) {
         composable("first") {
             val viewModel:FirstBattleScreenViewModel = FirstBattleScreenViewModel()
             FirstBattleScreen (
-               toSecond ={ navController.navigate("second")},
+               toSecond ={ navController.navigate("pass")},
                 viewModel = viewModel
             )
+        }
+
+        composable("pass"){
+            PassScreen {
+
+            }
         }
 
         composable("second") {
