@@ -130,6 +130,7 @@ fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayerHand[battleRound - 1] = handNumber
     Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound - 1]}")
+    finalBattleResultCheck()
     toResult()
 }
 
