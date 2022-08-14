@@ -1,6 +1,7 @@
 package com.example.crowbait.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -9,8 +10,11 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.components.ConfirmationCard
 import com.example.crowbait.ui.components.DeckCard
@@ -49,9 +53,11 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
             }
             Column(modifier = Modifier.padding(top = 40.dp)) {
                 Row {
-                    Card {
+                    Card (modifier = Modifier.background(color = Color.Yellow)){
                         Text(
-                            modifier = Modifier.padding(start = 10.dp, end = 10.dp),
+                            modifier = Modifier
+                                .background(color = Color.Yellow)
+                                .padding(start = 10.dp, end = 10.dp),
                             text = "先攻プレイヤー",
                             fontSize = 30.sp
                         )
@@ -135,11 +141,13 @@ fun firstChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewMod
     viewModel.changeConfirmation()
 }
 
-//@Preview
-//@Composable
-//fun PreviewBattleScreen() {
-//    val navController = rememberNavController()
-//    FirstBattleScreen{
-//        navController.navigate("second")
-//    }
-//}
+@Preview
+@Composable
+fun PreviewBattleScreen() {
+    val navController = rememberNavController()
+    val viewModel: FirstBattleScreenViewModel = FirstBattleScreenViewModel()
+    FirstBattleScreen(
+        toSecond = {navController.navigate("second")},
+        viewModel = viewModel
+    )
+}
