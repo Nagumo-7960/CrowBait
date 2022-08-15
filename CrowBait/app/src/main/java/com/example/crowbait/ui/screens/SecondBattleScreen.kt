@@ -1,6 +1,7 @@
 package com.example.crowbait.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -9,8 +10,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.components.ConfirmationCard
 import com.example.crowbait.ui.components.DeckCard
@@ -48,7 +51,9 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
                 Row {
                     Card {
                         Text(
-                            modifier = Modifier.padding(start = 10.dp, end = 10.dp),
+                            modifier = Modifier
+                                .background(color = Color.Cyan)
+                                .padding(start = 10.dp, end = 10.dp),
                             text = "後攻プレイヤー",
                             fontSize = 30.sp
                         )
@@ -159,11 +164,12 @@ fun finalBattleResultCheck() {
 
 }
 
-//@Preview
-//@Composable
-//fun PreviewSecondBattleScreen() {
-//    val navController = rememberNavController()
-//    SecondBattleScreen {
-//        navController.navigate("result")
-//    }
-//}
+@Preview
+@Composable
+fun PreviewSecondBattleScreen() {
+    val navController = rememberNavController()
+    SecondBattleScreen (
+        toResult = {navController.navigate("result")},
+        viewModel = FirstBattleScreenViewModel()
+    )
+}
