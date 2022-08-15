@@ -53,7 +53,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
             }
             Column(modifier = Modifier.padding(top = 40.dp)) {
                 Row {
-                    Card (modifier = Modifier.background(color = Color.Yellow)){
+                    Card{
                         Text(
                             modifier = Modifier
                                 .background(color = Color.Yellow)
