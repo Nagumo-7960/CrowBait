@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -26,13 +27,13 @@ fun FinalResultScreen(toReset:() -> Unit){
         Column(modifier = Modifier.padding(top = 100.dp)) {
                 Column() {
                   Card() {
-                      Text(text = "先攻プレイヤー", fontSize = 50.sp)
+                      Text(modifier = Modifier.background(color = Color.Yellow),text = "先攻プレイヤー", fontSize = 50.sp)
                   }
                     Text(text = "得点：${firstPlayerPoint}", fontSize = 50.sp, color = Color.White)
                 }
                 Column(modifier = Modifier.padding(top = 20.dp)) {
                     Card() {
-                        Text(text = "後攻プレイヤー", fontSize = 50.sp)
+                        Text(modifier = Modifier.background(color = Color.Cyan),text = "後攻プレイヤー", fontSize = 50.sp)
                     }
                     Text(text = "得点：${secondPlayerPoint}", fontSize = 50.sp,color = Color.White)
                 }
