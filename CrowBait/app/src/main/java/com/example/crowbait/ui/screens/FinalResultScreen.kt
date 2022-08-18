@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -19,20 +20,26 @@ fun FinalResultScreen(toReset:() -> Unit){
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card (modifier = Modifier.size(270.dp,100.dp)){
                 Box(contentAlignment = Alignment.Center) {
-                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    if(com.example.crowbait.ui.components.finalBattleResultCheck()=="先攻プレイヤーの勝利"){
+                        Text(modifier = Modifier.background(color = Color.Yellow).padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }else if(com.example.crowbait.ui.components.finalBattleResultCheck()=="後攻プレイヤーの勝利"){
+                        Text(modifier = Modifier.background(color = Color.Cyan).padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }else{
+                        Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }
                 }
             }
         }
         Column(modifier = Modifier.padding(top = 100.dp)) {
                 Column() {
                   Card() {
-                      Text(text = "先攻プレイヤー", fontSize = 50.sp)
+                      Text(modifier = Modifier.background(color = Color.Yellow),text = "先攻プレイヤー", fontSize = 50.sp)
                   }
                     Text(text = "得点：${firstPlayerPoint}", fontSize = 50.sp, color = Color.White)
                 }
                 Column(modifier = Modifier.padding(top = 20.dp)) {
                     Card() {
-                        Text(text = "後攻プレイヤー", fontSize = 50.sp)
+                        Text(modifier = Modifier.background(color = Color.Cyan),text = "後攻プレイヤー", fontSize = 50.sp)
                     }
                     Text(text = "得点：${secondPlayerPoint}", fontSize = 50.sp,color = Color.White)
                 }

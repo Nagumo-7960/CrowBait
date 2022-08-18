@@ -1,6 +1,7 @@
 package com.example.crowbait.ui.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -41,13 +42,17 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
                     if(deckNumber>0){
                         if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier
+                                    .background(color = Color.Yellow)
+                                    .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )
                         }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier
+                                    .background(color = Color.Cyan)
+                                    .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )
@@ -61,13 +66,13 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
                     }else{
                         if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier.background(color = Color.Cyan).padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )
                         }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier.background(color = Color.Yellow).padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )
