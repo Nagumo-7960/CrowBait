@@ -20,7 +20,13 @@ fun FinalResultScreen(toReset:() -> Unit){
         Column(modifier = Modifier.padding(top = 20.dp)) {
             Card (modifier = Modifier.size(270.dp,100.dp)){
                 Box(contentAlignment = Alignment.Center) {
-                    Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    if(com.example.crowbait.ui.components.finalBattleResultCheck()=="先攻プレイヤーの勝利"){
+                        Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp).background(color = Color.Yellow),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }else if(com.example.crowbait.ui.components.finalBattleResultCheck()=="後攻プレイヤーの勝利"){
+                        Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp).background(color = Color.Cyan),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }else{
+                        Text(modifier = Modifier.padding(start = 10.dp, end = 10.dp),text = com.example.crowbait.ui.components.finalBattleResultCheck(), fontSize = 35.sp)
+                    }
                 }
             }
         }
