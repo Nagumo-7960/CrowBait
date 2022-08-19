@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun ConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit,deckCardNumber: Int?) {
-    Card(modifier = Modifier.size(400.dp, 200.dp), shape = RoundedCornerShape(20)) {
+    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -27,6 +27,7 @@ fun ConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit,dec
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Card(
+                        elevation = 4.dp,
                         modifier = Modifier
                             .size(200.dp, 100.dp)
                             .clickable(
