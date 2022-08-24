@@ -24,7 +24,7 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
     setDeckNumber()
     Column(modifier = Modifier.fillMaxSize()) {
 
-        Column(modifier = Modifier.padding(top = 50.dp, start = 20.dp)) {
+        Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
             Card(
                 modifier = Modifier.size(100.dp, 50.dp)
                     .clickable(
