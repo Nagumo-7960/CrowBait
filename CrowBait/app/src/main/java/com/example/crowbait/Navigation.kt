@@ -11,10 +11,15 @@ import com.example.crowbait.ui.screens.*
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
+        composable("checkrule"){
+            CheckRuleScreen{navController.navigate("home")}
+        }
+
         composable("home") {
-            HomeScreen {
-                navController.navigate("first")
-            }
+            HomeScreen (
+                toCheckRule = {navController.navigate("checkrule")},
+                toStart = {navController.navigate("first")}
+            )
         }
 
         composable("first") {
