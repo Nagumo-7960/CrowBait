@@ -11,8 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+
 //test用
-var deckNumberSet = arrayOf(-1,1)
+var deckNumberSet = arrayOf(-1, 1)
 
 //var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
@@ -21,10 +22,16 @@ var deckNumber = 1
 fun HomeScreen(onClick: () -> Unit) {
     resetSetting()
     setDeckNumber()
-    Column(modifier = Modifier.fillMaxSize()){
+    Column(modifier = Modifier.fillMaxSize()) {
 
-        Column(modifier = Modifier.padding(top=50.dp, start = 20.dp)) {
-            Card(modifier = Modifier.size(100.dp,50.dp)){
+        Column(modifier = Modifier.padding(top = 50.dp, start = 20.dp)) {
+            Card(
+                modifier = Modifier.size(100.dp, 50.dp)
+                    .clickable(
+                        enabled = true,
+                        onClick = onClick
+                    )
+            ) {
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
@@ -88,17 +95,17 @@ fun HomeScreen(onClick: () -> Unit) {
 
 }
 
-fun setDeckNumber(){
-    deckNumber = deckNumberSet[battleRound-1]
+fun setDeckNumber() {
+    deckNumber = deckNumberSet[battleRound - 1]
 }
 
-fun resetSetting(){
+fun resetSetting() {
     deckNumberSet.shuffle()
     battleRound = 1
     firstPlayerPoint = 0
     secondPlayerPoint = 0
-    firstPlayerHand= arrayOfNulls(15)
-    secondPlayerHand= arrayOfNulls(15)
+    firstPlayerHand = arrayOfNulls(15)
+    secondPlayerHand = arrayOfNulls(15)
 }
 
 
