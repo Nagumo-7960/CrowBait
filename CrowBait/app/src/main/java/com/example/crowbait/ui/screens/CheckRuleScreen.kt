@@ -1,17 +1,36 @@
 package com.example.crowbait.ui.screens
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun CheckRuleScreen(){
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+    Column(modifier = Modifier.fillMaxSize()){
+        Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
+            Card(
+                modifier = Modifier.size(100.dp, 50.dp)
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "もどる",
+                        fontSize = 15.sp
+                    )
+                }
+            }
+        }
+    }
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()){
         Text(text = "ルール説明", color = Color.White)
     }
 }
