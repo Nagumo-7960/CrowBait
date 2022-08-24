@@ -19,7 +19,7 @@ var deckNumberSet = arrayOf(-1, 1)
 var deckNumber = 1
 
 @Composable
-fun HomeScreen(onClick: () -> Unit) {
+fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
     resetSetting()
     setDeckNumber()
     Column(modifier = Modifier.fillMaxSize()) {
@@ -29,7 +29,7 @@ fun HomeScreen(onClick: () -> Unit) {
                 modifier = Modifier.size(100.dp, 50.dp)
                     .clickable(
                         enabled = true,
-                        onClick = onClick
+                        onClick = toCheckRule
                     )
             ) {
                 Box(
@@ -77,7 +77,7 @@ fun HomeScreen(onClick: () -> Unit) {
                         .size(250.dp, 75.dp)
                         .clickable(
                             enabled = true,
-                            onClick = onClick
+                            onClick = toStart
                         )
                 ) {
                     Box(
@@ -113,7 +113,8 @@ fun resetSetting() {
 @Composable
 fun PreviewHomeScreen() {
     val navController = rememberNavController()
-    HomeScreen {
-        navController.navigate("first")
-    }
+    HomeScreen (
+        toCheckRule = {navController.navigate("first")},
+        toStart = {navController.navigate("first")}
+    )
 }
