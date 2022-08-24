@@ -12,65 +12,80 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 //test用
-//var deckNumberSet = arrayOf(-1,1)
+var deckNumberSet = arrayOf(-1,1)
 
-var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
+//var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
 
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
     resetSetting()
     setDeckNumber()
+    Column(modifier = Modifier.fillMaxSize()){
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(
-                    top = 20.dp
-                )
-        ) {
-            Card(
-                modifier = Modifier
-                    .size(100.dp, 200.dp)
-            ) {
+        Column(modifier = Modifier.padding(top=50.dp, start = 20.dp)) {
+            Card(modifier = Modifier.size(100.dp,50.dp)){
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Deck",
-                        fontSize = 30.sp
+                        text = "ルール説明",
+                        fontSize = 15.sp
                     )
                 }
             }
         }
-
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
         ) {
-            Card(
+            Column(
                 modifier = Modifier
-                    .size(250.dp, 75.dp)
-                    .clickable(
-                        enabled = true,
-                        onClick = onClick
+                    .padding(
+                        top = 20.dp
                     )
             ) {
-                Box(
+                Card(
                     modifier = Modifier
-                        .fillMaxSize(),
-                    contentAlignment = Alignment.Center
+                        .size(100.dp, 200.dp)
                 ) {
-                    Text(text = "ゲームスタート", fontSize = 30.sp)
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Deck",
+                            fontSize = 30.sp
+                        )
+                    }
                 }
             }
-        }
 
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Card(
+                    modifier = Modifier
+                        .size(250.dp, 75.dp)
+                        .clickable(
+                            enabled = true,
+                            onClick = onClick
+                        )
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "ゲームスタート", fontSize = 30.sp)
+                    }
+                }
+            }
+
+        }
     }
+
 }
 
 fun setDeckNumber(){
