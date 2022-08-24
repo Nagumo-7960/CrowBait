@@ -11,13 +11,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun CheckRuleScreen(){
+fun CheckRuleScreen(toBack:() -> Unit){
     Column(modifier = Modifier.fillMaxSize()){
         Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
             Card(
-                modifier = Modifier.size(100.dp, 50.dp)
+                modifier = Modifier
+                    .size(100.dp, 50.dp)
+                    .clickable(
+                        enabled = true,
+                        onClick = toBack
+                    )
             ) {
                 Box(
                     contentAlignment = Alignment.Center
@@ -38,5 +44,6 @@ fun CheckRuleScreen(){
 @Preview
 @Composable
 fun PreviewCheckRule(){
-    CheckRuleScreen()
+    val navController = rememberNavController()
+    CheckRuleScreen{navController.navigate("home")}
 }
