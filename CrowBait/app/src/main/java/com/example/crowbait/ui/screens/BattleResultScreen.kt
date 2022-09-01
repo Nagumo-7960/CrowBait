@@ -37,13 +37,15 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
             DeckCard(deckCardNumber = deckNumber)
         }
         Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(340.dp, 90.dp)) {
+            Card(modifier = Modifier
+                .size(340.dp, 90.dp),
+                backgroundColor = winnerColor
+            ) {
                 Box(contentAlignment = Alignment.Center) {
                     if(deckNumber>0){
                         if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
                             Text(
                                 modifier = Modifier
-                                    .background(color = Color.Yellow)
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの得点",
                                 fontSize = 25.sp
@@ -51,7 +53,6 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
                         }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
                             Text(
                                 modifier = Modifier
-                                    .background(color = Color.Cyan)
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの得点",
                                 fontSize = 25.sp
@@ -66,13 +67,15 @@ fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
                     }else{
                         if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.background(color = Color.Cyan).padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )
                         }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
                             Text(
-                                modifier = Modifier.background(color = Color.Yellow).padding(start = 20.dp, end = 20.dp),
+                                modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの得点",
                                 fontSize = 25.sp
                             )

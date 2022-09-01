@@ -23,6 +23,7 @@ import com.example.crowbait.ui.components.SelectCard
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0
 var secondCardSet = 1
+var winnerColor:Color = Color.White
 
 @Composable
 fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewModel) {
@@ -148,16 +149,20 @@ fun finalBattleResultCheck() {
     if (deckNumber>0){
         if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
             firstPlayerPoint += deckNumber
+            winnerColor = Color.Yellow
         }
         if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
             secondPlayerPoint += deckNumber
+            winnerColor = Color.Cyan
         }
     }else{
         if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
             secondPlayerPoint += deckNumber
+            winnerColor = Color.Yellow
         }
         if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
             firstPlayerPoint += deckNumber
+            winnerColor = Color.Cyan
         }
 
     }
