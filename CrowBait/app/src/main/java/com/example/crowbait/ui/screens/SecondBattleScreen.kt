@@ -15,10 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
-import com.example.crowbait.ui.components.ConfirmationCard
-import com.example.crowbait.ui.components.DeckCard
-import com.example.crowbait.ui.components.NonSelectCard
-import com.example.crowbait.ui.components.SelectCard
+import com.example.crowbait.ui.components.*
 
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0

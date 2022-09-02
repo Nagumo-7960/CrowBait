@@ -36,7 +36,7 @@ fun BattleBreakCard() {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "ルール説明",
+                    text = "ゲーム中断",
                     fontSize = 15.sp
                 )
             }

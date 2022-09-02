@@ -16,10 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
-import com.example.crowbait.ui.components.ConfirmationCard
-import com.example.crowbait.ui.components.DeckCard
-import com.example.crowbait.ui.components.NonSelectCard
-import com.example.crowbait.ui.components.SelectCard
+import com.example.crowbait.ui.components.*
 
 var battleRound = 1
 var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
@@ -31,7 +28,6 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
     val isConfirmation = viewModel.confirmation.observeAsState().value
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize(),
