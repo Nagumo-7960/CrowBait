@@ -18,7 +18,7 @@ import com.example.crowbait.ui.components.NewGameCard
 @Composable
 fun FinalResultScreen(toReset: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
-        BattleBreakCard()
+//        BattleBreakCard()
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Card(modifier = Modifier.size(270.dp, 100.dp)) {

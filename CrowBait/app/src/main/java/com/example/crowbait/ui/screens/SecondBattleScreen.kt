@@ -25,7 +25,7 @@ var winnerColor:Color = Color.White
 @Composable
 fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
     val isConfirmation = viewModel.battleConfirmation.observeAsState().value
-    BattleBreakCard()
+//    BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier

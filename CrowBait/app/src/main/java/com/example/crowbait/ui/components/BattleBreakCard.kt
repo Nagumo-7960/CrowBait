@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun BattleBreakCard() {
+fun BattleBreakCard(toConfirm:() -> Unit) {
     Column(
         modifier = Modifier
             .padding(
@@ -29,7 +29,7 @@ fun BattleBreakCard() {
                 .size(100.dp, 50.dp)
                 .clickable(
                     enabled = true,
-                    onClick = {}
+                    onClick = {toConfirm()}
                 )
         ) {
             Box(
@@ -45,8 +45,8 @@ fun BattleBreakCard() {
     }
 
 
-@Preview
-@Composable
-fun PreviewBattleBreakCard(){
-    BattleBreakCard()
-}
+//@Preview
+//@Composable
+//fun PreviewBattleBreakCard(){
+//    BattleBreakCard()
+//}

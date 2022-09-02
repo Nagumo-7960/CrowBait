@@ -16,7 +16,7 @@ import com.example.crowbait.ui.components.BattleBreakCard
 
 @Composable
 fun PassScreen(toSecond:() -> Unit) {
-    BattleBreakCard()
+//    BattleBreakCard()
         Column(modifier = Modifier.padding(top = 250.dp), horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(text = "後攻プレイヤーに渡してください", fontSize = 20.sp, color = Color.White)

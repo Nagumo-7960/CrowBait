@@ -23,9 +23,12 @@ var firstPlayerPoint = 0
 var firstCardSet = 1
 
 @Composable
-fun FirstBattleScreen(toSecond: () -> Unit, viewModel: BattleScreenViewModel) {
+fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleScreenViewModel) {
     val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
-    BattleBreakCard()
+    val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
+    BattleBreakCard(
+        toConfirm = {viewModel.changeBreakConfirmation()}
+    )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier
@@ -120,6 +123,12 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: BattleScreenViewModel) {
                 deckCardNumber = firstCardSet
             )
         }
+        if(isBreakConfirmation == true){
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
+            )
+        }
     }
 
 }
@@ -143,6 +152,7 @@ fun PreviewBattleScreen() {
     val viewModel: BattleScreenViewModel = BattleScreenViewModel()
     FirstBattleScreen(
         toSecond = {navController.navigate("second")},
+        toHome = {navController.navigate("home")},
         viewModel = viewModel
     )
 }

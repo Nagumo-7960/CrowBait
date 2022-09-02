@@ -10,35 +10,36 @@ import com.example.crowbait.ui.screens.*
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
-        composable("checkrule"){
-            CheckRuleScreen{navController.navigate("home")}
+        composable("checkrule") {
+            CheckRuleScreen { navController.navigate("home") }
         }
 
         composable("home") {
-            HomeScreen (
-                toCheckRule = {navController.navigate("checkrule")},
-                toStart = {navController.navigate("first")}
+            HomeScreen(
+                toCheckRule = { navController.navigate("checkrule") },
+                toStart = { navController.navigate("first") }
             )
         }
 
         composable("first") {
-            val viewModel:BattleScreenViewModel = BattleScreenViewModel()
-            FirstBattleScreen (
-               toSecond ={ navController.navigate("pass")},
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            FirstBattleScreen(
+                toSecond = { navController.navigate("pass") },
+                toHome = { navController.navigate("home") },
                 viewModel = viewModel
             )
         }
 
-        composable("pass"){
-            PassScreen{navController.navigate("second")}
+        composable("pass") {
+            PassScreen { navController.navigate("second") }
         }
 
         composable("second") {
-            val viewModel:BattleScreenViewModel = BattleScreenViewModel()
-            SecondBattleScreen (
-                toResult ={navController.navigate("result")},
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            SecondBattleScreen(
+                toResult = { navController.navigate("result") },
                 viewModel = viewModel
-                )
+            )
         }
 
         composable("result") {
