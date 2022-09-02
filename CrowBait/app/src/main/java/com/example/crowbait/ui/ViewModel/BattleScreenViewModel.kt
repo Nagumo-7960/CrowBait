@@ -4,11 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class BattleScreenViewModel {
-    private val _confirmation:MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
-    val confirmation: LiveData<Boolean> get() = _confirmation
+    private val _battleConfirmation:MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val battleConfirmation: LiveData<Boolean> get() = _battleConfirmation
 
-    fun changeConfirmation(){
-        if(_confirmation.value==true) _confirmation.value=false
-        else _confirmation.value = true
+    private val _breakConfirmation:MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val breakConfirmation: LiveData<Boolean> get() = _breakConfirmation
+
+    fun changeBattleConfirmation(){
+        if(_battleConfirmation.value==true) _battleConfirmation.value=false
+        else _battleConfirmation.value = true
+    }
+    fun changeBreakConfirmation(){
+        if(_breakConfirmation.value==true) _breakConfirmation.value=false
+        else _breakConfirmation.value = true
     }
 }

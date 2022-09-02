@@ -24,7 +24,7 @@ var firstCardSet = 1
 
 @Composable
 fun FirstBattleScreen(toSecond: () -> Unit, viewModel: BattleScreenViewModel) {
-    val isConfirmation = viewModel.confirmation.observeAsState().value
+    val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
     BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -113,10 +113,10 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: BattleScreenViewModel) {
             }
 
         }
-        if (isConfirmation == true) {
+        if (isBattleConfirmation == true) {
             HandConfirmationCard(
                 determine_button = { getFirstPlayerHand(firstCardSet,toSecond) },
-                cancel_button = { viewModel.changeConfirmation() },
+                cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = firstCardSet
             )
         }
@@ -133,7 +133,7 @@ fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
 
 fun firstChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     firstCardSet = handNumber
-    viewModel.changeConfirmation()
+    viewModel.changeBattleConfirmation()
 }
 
 @Preview

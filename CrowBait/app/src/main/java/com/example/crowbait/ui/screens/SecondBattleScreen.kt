@@ -24,7 +24,7 @@ var winnerColor:Color = Color.White
 
 @Composable
 fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
-    val isConfirmation = viewModel.confirmation.observeAsState().value
+    val isConfirmation = viewModel.battleConfirmation.observeAsState().value
     BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -123,7 +123,7 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
         if (isConfirmation == true) {
             HandConfirmationCard(
                 determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
-                cancel_button = { viewModel.changeConfirmation() },
+                cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = secondCardSet
             )
         }
@@ -140,7 +140,7 @@ fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
 
 fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     secondCardSet = handNumber
-    viewModel.changeConfirmation()
+    viewModel.changeBattleConfirmation()
 }
 
 fun finalBattleResultCheck() {
