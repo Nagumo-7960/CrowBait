@@ -12,9 +12,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.ui.components.BattleBreakCard
 
 @Composable
 fun PassScreen(toSecond:() -> Unit) {
+    BattleBreakCard()
         Column(modifier = Modifier.padding(top = 250.dp), horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(text = "後攻プレイヤーに渡してください", fontSize = 20.sp, color = Color.White)

@@ -22,6 +22,7 @@ import com.example.crowbait.ui.components.NextRoundCard
 @Composable
 fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
     Log.d("deckNumber", "deckNumber:${deckNumber}")
+    BattleBreakCard()
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Column(
             modifier = Modifier.padding(

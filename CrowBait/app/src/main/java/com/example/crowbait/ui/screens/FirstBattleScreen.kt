@@ -26,7 +26,7 @@ var firstCardSet = 1
 @Composable
 fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewModel) {
     val isConfirmation = viewModel.confirmation.observeAsState().value
-
+    BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier
