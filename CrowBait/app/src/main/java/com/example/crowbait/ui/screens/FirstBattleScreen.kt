@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 var battleRound = 1
@@ -23,7 +23,7 @@ var firstPlayerPoint = 0
 var firstCardSet = 1
 
 @Composable
-fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewModel) {
+fun FirstBattleScreen(toSecond: () -> Unit, viewModel: BattleScreenViewModel) {
     val isConfirmation = viewModel.confirmation.observeAsState().value
     BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -131,7 +131,7 @@ fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
     toSecond()
 }
 
-fun firstChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewModel){
+fun firstChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     firstCardSet = handNumber
     viewModel.changeConfirmation()
 }
@@ -140,7 +140,7 @@ fun firstChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewMod
 @Composable
 fun PreviewBattleScreen() {
     val navController = rememberNavController()
-    val viewModel: FirstBattleScreenViewModel = FirstBattleScreenViewModel()
+    val viewModel: BattleScreenViewModel = BattleScreenViewModel()
     FirstBattleScreen(
         toSecond = {navController.navigate("second")},
         viewModel = viewModel

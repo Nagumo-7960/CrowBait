@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
@@ -23,7 +23,7 @@ var secondCardSet = 1
 var winnerColor:Color = Color.White
 
 @Composable
-fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewModel) {
+fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
     val isConfirmation = viewModel.confirmation.observeAsState().value
     BattleBreakCard()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -138,7 +138,7 @@ fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
     toResult()
 }
 
-fun secondChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewModel){
+fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     secondCardSet = handNumber
     viewModel.changeConfirmation()
 }
@@ -173,6 +173,6 @@ fun PreviewSecondBattleScreen() {
     val navController = rememberNavController()
     SecondBattleScreen (
         toResult = {navController.navigate("result")},
-        viewModel = FirstBattleScreenViewModel()
+        viewModel = BattleScreenViewModel()
     )
 }
