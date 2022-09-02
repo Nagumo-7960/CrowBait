@@ -121,7 +121,7 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
 
         }
         if (isConfirmation == true) {
-            ConfirmationCard(
+            HandConfirmationCard(
                 determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
                 cancel_button = { viewModel.changeConfirmation() },
                 deckCardNumber = secondCardSet

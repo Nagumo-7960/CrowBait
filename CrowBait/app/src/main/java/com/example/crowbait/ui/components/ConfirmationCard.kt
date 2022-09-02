@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun ConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit,deckCardNumber: Int?) {
+fun HandConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit, deckCardNumber: Int?) {
     Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
@@ -72,7 +72,7 @@ fun ConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit,dec
 @Composable
 fun PreviewConfirmationCard() {
     val navController = rememberNavController()
-    ConfirmationCard(
+    HandConfirmationCard(
         determine_button = {
             navController.navigate("battle")
         },

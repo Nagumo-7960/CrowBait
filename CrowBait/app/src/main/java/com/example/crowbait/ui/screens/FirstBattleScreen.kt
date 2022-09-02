@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
 import com.example.crowbait.ui.components.*
@@ -115,7 +114,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
 
         }
         if (isConfirmation == true) {
-            ConfirmationCard(
+            HandConfirmationCard(
                 determine_button = { getFirstPlayerHand(firstCardSet,toSecond) },
                 cancel_button = { viewModel.changeConfirmation() },
                 deckCardNumber = firstCardSet
