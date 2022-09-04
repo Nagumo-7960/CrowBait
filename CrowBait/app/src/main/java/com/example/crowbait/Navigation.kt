@@ -31,7 +31,12 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("pass") {
-            PassScreen { navController.navigate("second") }
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            PassScreen (
+                toSecond = {navController.navigate("second") },
+                toHome = {navController.navigate("home")},
+                viewModel = viewModel
+            )
         }
 
         composable("second") {
