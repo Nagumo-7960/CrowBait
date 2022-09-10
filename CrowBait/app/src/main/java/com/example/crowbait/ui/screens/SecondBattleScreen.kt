@@ -23,9 +23,12 @@ var secondCardSet = 1
 var winnerColor:Color = Color.White
 
 @Composable
-fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
-    val isConfirmation = viewModel.battleConfirmation.observeAsState().value
-//    BattleBreakCard()
+fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: BattleScreenViewModel) {
+    val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
+    val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
+    BattleBreakCard(
+        toConfirm = {viewModel.changeBreakConfirmation()}
+    )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier
@@ -120,11 +123,17 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: BattleScreenViewModel) {
             }
 
         }
-        if (isConfirmation == true) {
+        if (isBattleConfirmation == true) {
             HandConfirmationCard(
                 determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
                 cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = secondCardSet
+            )
+        }
+        if(isBreakConfirmation == true){
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
             )
         }
     }
@@ -173,6 +182,7 @@ fun PreviewSecondBattleScreen() {
     val navController = rememberNavController()
     SecondBattleScreen (
         toResult = {navController.navigate("result")},
+        toHome = {navController.navigate("home")},
         viewModel = BattleScreenViewModel()
     )
 }

@@ -43,6 +43,7 @@ fun Navigation(navController: NavHostController) {
             val viewModel: BattleScreenViewModel = BattleScreenViewModel()
             SecondBattleScreen(
                 toResult = { navController.navigate("result") },
+                toHome = {navController.navigate("home")},
                 viewModel = viewModel
             )
         }
