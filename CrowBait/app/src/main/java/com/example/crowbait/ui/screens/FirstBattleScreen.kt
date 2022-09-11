@@ -13,13 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
-import com.example.crowbait.ui.components.ConfirmationCard
-import com.example.crowbait.ui.components.DeckCard
-import com.example.crowbait.ui.components.NonSelectCard
-import com.example.crowbait.ui.components.SelectCard
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
+import com.example.crowbait.ui.components.*
 
 var battleRound = 1
 var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
@@ -27,11 +23,13 @@ var firstPlayerPoint = 0
 var firstCardSet = 1
 
 @Composable
-fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewModel) {
-    val isConfirmation = viewModel.confirmation.observeAsState().value
-
+fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleScreenViewModel) {
+    val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
+    val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
+    BattleBreakCard(
+        toConfirm = {viewModel.changeBreakConfirmation()}
+    )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-
         Column(
             modifier = Modifier
                 .fillMaxSize(),
@@ -118,11 +116,17 @@ fun FirstBattleScreen(toSecond: () -> Unit, viewModel: FirstBattleScreenViewMode
             }
 
         }
-        if (isConfirmation == true) {
-            ConfirmationCard(
+        if (isBattleConfirmation == true) {
+            HandConfirmationCard(
                 determine_button = { getFirstPlayerHand(firstCardSet,toSecond) },
-                cancel_button = { viewModel.changeConfirmation() },
+                cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = firstCardSet
+            )
+        }
+        if(isBreakConfirmation == true){
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
             )
         }
     }
@@ -136,18 +140,19 @@ fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
     toSecond()
 }
 
-fun firstChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewModel){
+fun firstChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     firstCardSet = handNumber
-    viewModel.changeConfirmation()
+    viewModel.changeBattleConfirmation()
 }
 
 @Preview
 @Composable
 fun PreviewBattleScreen() {
     val navController = rememberNavController()
-    val viewModel: FirstBattleScreenViewModel = FirstBattleScreenViewModel()
+    val viewModel: BattleScreenViewModel = BattleScreenViewModel()
     FirstBattleScreen(
         toSecond = {navController.navigate("second")},
+        toHome = {navController.navigate("home")},
         viewModel = viewModel
     )
 }

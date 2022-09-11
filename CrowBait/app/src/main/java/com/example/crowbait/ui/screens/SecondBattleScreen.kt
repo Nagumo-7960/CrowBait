@@ -14,11 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
-import com.example.crowbait.ui.components.ConfirmationCard
-import com.example.crowbait.ui.components.DeckCard
-import com.example.crowbait.ui.components.NonSelectCard
-import com.example.crowbait.ui.components.SelectCard
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
+import com.example.crowbait.ui.components.*
 
 var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
 var secondPlayerPoint = 0
@@ -26,8 +23,12 @@ var secondCardSet = 1
 var winnerColor:Color = Color.White
 
 @Composable
-fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewModel) {
-    val isConfirmation = viewModel.confirmation.observeAsState().value
+fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: BattleScreenViewModel) {
+    val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
+    val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
+    BattleBreakCard(
+        toConfirm = {viewModel.changeBreakConfirmation()}
+    )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             modifier = Modifier
@@ -122,11 +123,17 @@ fun SecondBattleScreen(toResult: () -> Unit,viewModel: FirstBattleScreenViewMode
             }
 
         }
-        if (isConfirmation == true) {
-            ConfirmationCard(
+        if (isBattleConfirmation == true) {
+            HandConfirmationCard(
                 determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
-                cancel_button = { viewModel.changeConfirmation() },
+                cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = secondCardSet
+            )
+        }
+        if(isBreakConfirmation == true){
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
             )
         }
     }
@@ -140,9 +147,9 @@ fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
     toResult()
 }
 
-fun secondChangeConfirmation(handNumber: Int, viewModel: FirstBattleScreenViewModel){
+fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
     secondCardSet = handNumber
-    viewModel.changeConfirmation()
+    viewModel.changeBattleConfirmation()
 }
 
 fun finalBattleResultCheck() {
@@ -175,6 +182,7 @@ fun PreviewSecondBattleScreen() {
     val navController = rememberNavController()
     SecondBattleScreen (
         toResult = {navController.navigate("result")},
-        viewModel = FirstBattleScreenViewModel()
+        toHome = {navController.navigate("home")},
+        viewModel = BattleScreenViewModel()
     )
 }

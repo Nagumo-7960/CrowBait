@@ -4,48 +4,57 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.ViewModel.FirstBattleScreenViewModel
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.screens.*
 
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
-        composable("checkrule"){
-            CheckRuleScreen{navController.navigate("home")}
+        composable("checkrule") {
+            CheckRuleScreen { navController.navigate("home") }
         }
 
         composable("home") {
-            HomeScreen (
-                toCheckRule = {navController.navigate("checkrule")},
-                toStart = {navController.navigate("first")}
+            HomeScreen(
+                toCheckRule = { navController.navigate("checkrule") },
+                toStart = { navController.navigate("first") }
             )
         }
 
         composable("first") {
-            val viewModel:FirstBattleScreenViewModel = FirstBattleScreenViewModel()
-            FirstBattleScreen (
-               toSecond ={ navController.navigate("pass")},
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            FirstBattleScreen(
+                toSecond = { navController.navigate("pass") },
+                toHome = { navController.navigate("home") },
                 viewModel = viewModel
             )
         }
 
-        composable("pass"){
-            PassScreen{navController.navigate("second")}
+        composable("pass") {
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            PassScreen (
+                toSecond = {navController.navigate("second") },
+                toHome = {navController.navigate("home")},
+                viewModel = viewModel
+            )
         }
 
         composable("second") {
-            val viewModel:FirstBattleScreenViewModel = FirstBattleScreenViewModel()
-            SecondBattleScreen (
-                toResult ={navController.navigate("result")},
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+            SecondBattleScreen(
+                toResult = { navController.navigate("result") },
+                toHome = {navController.navigate("home")},
                 viewModel = viewModel
-                )
+            )
         }
 
         composable("result") {
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
             BattleResultScreen(
                 toFirst = { navController.navigate("first") },
-                toFinal = { navController.navigate("final") }
+                toHome = {navController.navigate("home")},
+                toFinal = { navController.navigate("final") },
+                viewModel = viewModel
             )
         }
 
