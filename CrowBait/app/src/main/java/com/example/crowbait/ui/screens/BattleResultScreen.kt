@@ -22,12 +22,6 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
         toConfirm = { viewModel.changeBreakConfirmation() }
     )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        if (isBreakConfirmation == true) {
-            BreakConfirmationCard(
-                determine_button = toHome,
-                cancel_button = { viewModel.changeBreakConfirmation() }
-            )
-        }
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -139,6 +133,12 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                     )
                 }
             }
+        }
+        if (isBreakConfirmation == true) {
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
+            )
         }
     }
 }
