@@ -49,9 +49,12 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable("result") {
+            val viewModel: BattleScreenViewModel = BattleScreenViewModel()
             BattleResultScreen(
                 toFirst = { navController.navigate("first") },
-                toFinal = { navController.navigate("final") }
+                toHome = {navController.navigate("home")},
+                toFinal = { navController.navigate("final") },
+                viewModel = viewModel
             )
         }
 
