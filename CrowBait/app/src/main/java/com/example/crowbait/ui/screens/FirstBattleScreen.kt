@@ -76,7 +76,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                 Row {
                     for (i in 1..5) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (firstPlayerHand.contains(i)) {
+                            if (firstPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(selectCardNumber = i)
                             } else {
                                 SelectCard(
@@ -135,6 +135,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
 
 fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
     //配列の(n回戦)番目に出す手の数字を入れる
+    firstPlayer.usedHandsList.add(handNumber)
     firstPlayerHand[battleRound - 1] = handNumber
     Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound - 1]}")
     toSecond()
