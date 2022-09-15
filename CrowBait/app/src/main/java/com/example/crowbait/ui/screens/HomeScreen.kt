@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.model.Player
 
 //test用
 //var deckNumberSet = arrayOf(-1, 1)
@@ -100,6 +101,9 @@ fun setDeckNumber() {
 }
 
 fun resetSetting() {
+    var firstPlayer = Player()
+    var secondPlayer = Player()
+
     deckNumberSet.shuffle()
     battleRound = 1
     firstPlayerPoint = 0
