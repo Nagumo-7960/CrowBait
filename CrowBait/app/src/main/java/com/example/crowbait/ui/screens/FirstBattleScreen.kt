@@ -90,7 +90,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                 Row(modifier = Modifier.padding(top = 20.dp)) {
                     for (i in 6..10) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (firstPlayerHand.contains(i)) {
+                            if (firstPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(selectCardNumber = i)
                             } else {
                                 SelectCard(
@@ -103,7 +103,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                 Row(modifier = Modifier.padding(top = 20.dp)) {
                     for (i in 11..15) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (firstPlayerHand.contains(i)) {
+                            if (firstPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(selectCardNumber = i)
                             } else {
                                 SelectCard(
