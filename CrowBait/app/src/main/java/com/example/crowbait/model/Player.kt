@@ -1,8 +1,8 @@
 package com.example.crowbait.model
 
 class Player (){
-    val score: Int = 0
-    val usedHandsList = mutableListOf<Int>()
+    var score: Int = 0
+    var usedHandsList = mutableListOf<Int>()
 
     fun checkPlayerHand(cardNumber:Int){
         usedHandsList.add(cardNumber)

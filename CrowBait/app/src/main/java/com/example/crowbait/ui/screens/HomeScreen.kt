@@ -19,9 +19,12 @@ import com.example.crowbait.model.Player
 var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
 
+var firstPlayer = Player()
+var secondPlayer = Player()
+
 @Composable
 fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
-    resetSetting()
+    resetSetting(firstPlayer, secondPlayer)
     setDeckNumber()
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -100,9 +103,11 @@ fun setDeckNumber() {
     deckNumber = deckNumberSet[battleRound - 1]
 }
 
-fun resetSetting() {
-    var firstPlayer = Player()
-    var secondPlayer = Player()
+fun resetSetting(firstPlayer: Player, secondPlayer: Player) {
+    firstPlayer.score = 0
+    firstPlayer.usedHandsList = mutableListOf<Int>()
+    secondPlayer.score = 0
+    secondPlayer.usedHandsList = mutableListOf<Int>()
 
     deckNumberSet.shuffle()
     battleRound = 1
