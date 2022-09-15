@@ -103,7 +103,7 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             Text(
-                                text = "得点:${firstPlayerPoint}",
+                                text = "得点:${firstPlayer.score}",
                                 fontSize = 15.sp,
                                 color = Color.White
                             )
@@ -114,7 +114,7 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             Text(
-                                text = "得点:${secondPlayerPoint}",
+                                text = "得点:${secondPlayer.score}",
                                 fontSize = 15.sp,
                                 color = Color.White
                             )

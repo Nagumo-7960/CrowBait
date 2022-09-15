@@ -156,19 +156,23 @@ fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
 fun finalBattleResultCheck() {
     if (deckNumber>0){
         if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+            firstPlayer.score += deckNumber
             firstPlayerPoint += deckNumber
             winnerColor = Color.Yellow
         }
         if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+            secondPlayer.score += deckNumber
             secondPlayerPoint += deckNumber
             winnerColor = Color.Cyan
         }
     }else{
         if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+            secondPlayer.score += deckNumber
             secondPlayerPoint += deckNumber
             winnerColor = Color.Yellow
         }
         if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+            firstPlayer.score += deckNumber
             firstPlayerPoint += deckNumber
             winnerColor = Color.Cyan
         }
