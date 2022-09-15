@@ -61,7 +61,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                         )
                     }
                     Row(modifier = Modifier.padding(start = 10.dp)) {
-                        Text(text = "得点：${firstPlayerPoint}", fontSize = 30.sp, color = Color.White)
+                        Text(text = "得点：${firstPlayer.score}", fontSize = 30.sp, color = Color.White)
                     }
                 }
             }

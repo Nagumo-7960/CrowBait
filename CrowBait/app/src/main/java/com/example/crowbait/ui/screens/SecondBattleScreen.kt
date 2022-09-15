@@ -62,7 +62,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
                     }
                     Row(modifier = Modifier.padding(start = 10.dp)) {
                         Text(
-                            text = "得点：${secondPlayerPoint}",
+                            text = "得点：${secondPlayer.score}",
                             fontSize = 30.sp,
                             color = Color.White
                         )
