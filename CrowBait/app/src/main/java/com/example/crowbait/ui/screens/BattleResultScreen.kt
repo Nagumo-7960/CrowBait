@@ -48,14 +48,14 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         if (deckNumber > 0) {
-                            if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+                            if (firstPlayer.usedHandsList[battleRound - 1]!! > secondPlayer.usedHandsList[battleRound - 1]!!) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
                                     text = "先攻プレイヤーの得点",
                                     fontSize = 25.sp
                                 )
-                            } else if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+                            } else if (secondPlayer.usedHandsList[battleRound - 1]!! > firstPlayer.usedHandsList[battleRound - 1]!!) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
@@ -70,14 +70,14 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                                 )
                             }
                         } else {
-                            if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+                            if (firstPlayer.usedHandsList[battleRound - 1]!! > secondPlayer.usedHandsList[battleRound - 1]!!) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
                                     text = "後攻プレイヤーの得点",
                                     fontSize = 25.sp
                                 )
-                            } else if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+                            } else if (secondPlayer.usedHandsList[battleRound - 1]!! > firstPlayer.usedHandsList[battleRound - 1]!!) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
