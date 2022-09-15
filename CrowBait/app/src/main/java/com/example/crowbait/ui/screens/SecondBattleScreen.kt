@@ -78,7 +78,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
                 Row {
                     for (i in 1..5) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayerHand.contains(i)) {
+                            if (secondPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(
                                     selectCardNumber = i,
                                 )
@@ -93,7 +93,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
                 Row(modifier = Modifier.padding(top = 20.dp)) {
                     for (i in 6..10) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayerHand.contains(i)) {
+                            if (secondPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(
                                     selectCardNumber = i,
                                 )
@@ -108,7 +108,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
                 Row(modifier = Modifier.padding(top = 20.dp)) {
                     for (i in 11..15) {
                         Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayerHand.contains(i)) {
+                            if (secondPlayer.usedHandsList.contains(i)) {
                                 NonSelectCard(
                                     selectCardNumber = i,
                                 )
@@ -141,6 +141,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
 
 fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
     //配列の(n回戦)番目に出す手の数字を入れる
+    secondPlayer.usedHandsList.add(handNumber)
     secondPlayerHand[battleRound - 1] = handNumber
     Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound - 1]}")
     finalBattleResultCheck()
