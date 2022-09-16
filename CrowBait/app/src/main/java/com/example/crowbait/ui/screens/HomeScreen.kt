@@ -14,9 +14,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.model.Player
 
 //test用
-//var deckNumberSet = arrayOf(-1, 1)
+var deckNumberSet = arrayOf(-1, 1)
 
-var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
+//var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
 
 var firstPlayer = Player()
