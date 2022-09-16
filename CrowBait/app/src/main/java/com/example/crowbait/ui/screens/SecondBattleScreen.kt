@@ -1,6 +1,5 @@
 package com.example.crowbait.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -17,17 +16,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
-var secondPlayerHand: Array<Int?> = arrayOfNulls(15)
-var secondPlayerPoint = 0
 var secondCardSet = 1
-var winnerColor:Color = Color.White
+var winnerColor: Color = Color.White
 
 @Composable
-fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: BattleScreenViewModel) {
+fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: BattleScreenViewModel) {
     val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
     val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
     BattleBreakCard(
-        toConfirm = {viewModel.changeBreakConfirmation()}
+        toConfirm = { viewModel.changeBreakConfirmation() }
     )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -125,12 +122,12 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
         }
         if (isBattleConfirmation == true) {
             HandConfirmationCard(
-                determine_button = { getSecondPlayerHand(secondCardSet,toResult) },
+                determine_button = { getSecondPlayerHand(secondCardSet, toResult) },
                 cancel_button = { viewModel.changeBattleConfirmation() },
                 deckCardNumber = secondCardSet
             )
         }
-        if(isBreakConfirmation == true){
+        if (isBreakConfirmation == true) {
             BreakConfirmationCard(
                 determine_button = toHome,
                 cancel_button = { viewModel.changeBreakConfirmation() }
@@ -139,41 +136,35 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome:() -> Unit, viewModel: Battl
     }
 }
 
-fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit, ) {
+fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayer.usedHandsList.add(handNumber)
-    secondPlayerHand[battleRound - 1] = handNumber
-    Log.d("debag", "secondPlayerHand:${secondPlayerHand[battleRound - 1]}")
     finalBattleResultCheck()
     toResult()
 }
 
-fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
+fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel) {
     secondCardSet = handNumber
     viewModel.changeBattleConfirmation()
 }
 
 fun finalBattleResultCheck() {
-    if (deckNumber>0){
-        if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+    if (deckNumber > 0) {
+        if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             firstPlayer.score += deckNumber
-            firstPlayerPoint += deckNumber
             winnerColor = Color.Yellow
         }
-        if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+        if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
             secondPlayer.score += deckNumber
-            secondPlayerPoint += deckNumber
             winnerColor = Color.Cyan
         }
-    }else{
-        if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+    } else {
+        if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             secondPlayer.score += deckNumber
-            secondPlayerPoint += deckNumber
             winnerColor = Color.Yellow
         }
-        if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+        if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
             firstPlayer.score += deckNumber
-            firstPlayerPoint += deckNumber
             winnerColor = Color.Cyan
         }
 
@@ -185,9 +176,9 @@ fun finalBattleResultCheck() {
 @Composable
 fun PreviewSecondBattleScreen() {
     val navController = rememberNavController()
-    SecondBattleScreen (
-        toResult = {navController.navigate("result")},
-        toHome = {navController.navigate("home")},
+    SecondBattleScreen(
+        toResult = { navController.navigate("result") },
+        toHome = { navController.navigate("home") },
         viewModel = BattleScreenViewModel()
     )
 }

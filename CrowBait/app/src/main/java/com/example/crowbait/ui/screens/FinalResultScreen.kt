@@ -58,7 +58,7 @@ fun FinalResultScreen(toReset: () -> Unit) {
                             fontSize = 50.sp
                         )
                     }
-                    Text(text = "得点：${firstPlayerPoint}", fontSize = 50.sp, color = Color.White)
+                    Text(text = "得点：${firstPlayer.score}", fontSize = 50.sp, color = Color.White)
                 }
                 Column(modifier = Modifier.padding(top = 20.dp)) {
                     Card {
@@ -68,7 +68,7 @@ fun FinalResultScreen(toReset: () -> Unit) {
                             fontSize = 50.sp
                         )
                     }
-                    Text(text = "得点：${secondPlayerPoint}", fontSize = 50.sp, color = Color.White)
+                    Text(text = "得点：${secondPlayer.score}", fontSize = 50.sp, color = Color.White)
                 }
             }
             Column(modifier = Modifier.padding(top = 30.dp)) {

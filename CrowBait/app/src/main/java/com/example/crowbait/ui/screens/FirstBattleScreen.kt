@@ -17,9 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
-var battleRound = 1
-var firstPlayerHand: Array<Int?> = arrayOfNulls(15)
-var firstPlayerPoint = 0
+
 var firstCardSet = 1
 
 @Composable
@@ -136,8 +134,6 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
 fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
     //配列の(n回戦)番目に出す手の数字を入れる
     firstPlayer.usedHandsList.add(handNumber)
-    firstPlayerHand[battleRound - 1] = handNumber
-    Log.d("debag", "firstPlayerHand:${firstPlayerHand[battleRound - 1]}")
     toSecond()
 }
 
