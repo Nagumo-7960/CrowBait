@@ -15,7 +15,12 @@ import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 @Composable
-fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Unit,viewModel: BattleScreenViewModel) {
+fun BattleResultScreen(
+    toFirst: () -> Unit,
+    toFinal: () -> Unit,
+    toHome: () -> Unit,
+    viewModel: BattleScreenViewModel
+) {
     Log.d("deckNumber", "deckNumber:${deckNumber}")
     val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
     BattleBreakCard(
@@ -48,14 +53,14 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         if (deckNumber > 0) {
-                            if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
                                     text = "先攻プレイヤーの得点",
                                     fontSize = 25.sp
                                 )
-                            } else if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
@@ -70,14 +75,14 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
                                 )
                             }
                         } else {
-                            if (firstPlayerHand[battleRound - 1]!! > secondPlayerHand[battleRound - 1]!!) {
+                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
                                     text = "後攻プレイヤーの得点",
                                     fontSize = 25.sp
                                 )
-                            } else if (secondPlayerHand[battleRound - 1]!! > firstPlayerHand[battleRound - 1]!!) {
+                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
@@ -99,22 +104,22 @@ fun BattleResultScreen(toFirst: () -> Unit, toFinal: () -> Unit, toHome:() -> Un
             Column(modifier = Modifier.padding(top = 30.dp)) {
                 Row {
                     Column {
-                        DeckCard(deckCardNumber = firstPlayerHand[battleRound - 1])
+                        DeckCard(deckCardNumber = firstPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             Text(
-                                text = "得点:${firstPlayerPoint}",
+                                text = "得点:${firstPlayer.score}",
                                 fontSize = 15.sp,
                                 color = Color.White
                             )
                         }
                     }
                     Column(modifier = Modifier.padding(start = 30.dp)) {
-                        DeckCard(deckCardNumber = secondPlayerHand[battleRound - 1])
+                        DeckCard(deckCardNumber = secondPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             Text(
-                                text = "得点:${secondPlayerPoint}",
+                                text = "得点:${secondPlayer.score}",
                                 fontSize = 15.sp,
                                 color = Color.White
                             )
