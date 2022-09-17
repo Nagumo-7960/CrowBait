@@ -139,7 +139,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: Batt
 fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayer.usedHandsList.add(handNumber)
-    finalBattleResultCheck()
+    battleResultCheck()
     toResult()
 }
 
@@ -148,7 +148,7 @@ fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel) 
     viewModel.changeBattleConfirmation()
 }
 
-fun finalBattleResultCheck() {
+fun battleResultCheck() {
     if (deckNumber > 0) {
         if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             firstPlayer.score += deckNumber

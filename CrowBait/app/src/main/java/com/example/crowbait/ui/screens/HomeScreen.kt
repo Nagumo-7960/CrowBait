@@ -16,7 +16,7 @@ import com.example.crowbait.model.Player
 //test用
 //var deckNumberSet = arrayOf(-1, 1)
 
-var deckNumberSet = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
+var deckNumberList = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
 var deckNumber = 1
 var battleRound = 1
 
@@ -101,7 +101,7 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
 }
 
 fun setDeckNumber() {
-    deckNumber = deckNumberSet[battleRound - 1]
+    deckNumber = deckNumberList[battleRound - 1]
 }
 
 fun resetSetting(firstPlayer: Player, secondPlayer: Player) {
@@ -112,7 +112,7 @@ fun resetSetting(firstPlayer: Player, secondPlayer: Player) {
     secondPlayer.usedHandsList = mutableListOf<Int>()
 
     //山札をシャッフルし、ラウンドを1に戻す
-    deckNumberSet.shuffle()
+    deckNumberList.shuffle()
     battleRound = 1
 }
 
