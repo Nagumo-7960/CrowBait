@@ -128,7 +128,7 @@ fun BattleResultScreen(
                 }
             }
             Column(modifier = Modifier.padding(top = 20.dp)) {
-                if (battleRound == deckNumberSet.size) {
+                if (battleRound == deckNumberList.size) {
                     FinalRoundCard {
                         toFinal()
                     }
