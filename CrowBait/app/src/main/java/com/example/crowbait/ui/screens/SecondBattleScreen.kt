@@ -72,47 +72,19 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: Batt
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row {
-                    for (i in 1..5) {
-                        Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayer.usedHandsList.contains(i)) {
-                                NonSelectCard(
-                                    selectCardNumber = i,
-                                )
-                            } else {
-                                SelectCard(
-                                    selectCardNumber = i,
-                                    onClick = { secondChangeConfirmation(i, viewModel) })
-                            }
-                        }
-                    }
-                }
-                Row(modifier = Modifier.padding(top = 20.dp)) {
-                    for (i in 6..10) {
-                        Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayer.usedHandsList.contains(i)) {
-                                NonSelectCard(
-                                    selectCardNumber = i,
-                                )
-                            } else {
-                                SelectCard(
-                                    selectCardNumber = i,
-                                    onClick = { secondChangeConfirmation(i, viewModel) })
-                            }
-                        }
-                    }
-                }
-                Row(modifier = Modifier.padding(top = 20.dp)) {
-                    for (i in 11..15) {
-                        Column(modifier = Modifier.padding(start = 10.dp)) {
-                            if (secondPlayer.usedHandsList.contains(i)) {
-                                NonSelectCard(
-                                    selectCardNumber = i,
-                                )
-                            } else {
-                                SelectCard(
-                                    selectCardNumber = i,
-                                    onClick = { secondChangeConfirmation(i, viewModel) })
+                for(i in 1..11 step 5){
+                    Row(modifier = Modifier.padding(top = 20.dp)) {
+                        for (j in i..i+4) {
+                            Column(modifier = Modifier.padding(start = 10.dp)) {
+                                if (secondPlayer.usedHandsList.contains(j)) {
+                                    NonSelectCard(
+                                        selectCardNumber = j,
+                                    )
+                                } else {
+                                    SelectCard(
+                                        selectCardNumber = j,
+                                        onClick = { secondChangeConfirmation(j, viewModel) })
+                                }
                             }
                         }
                     }
