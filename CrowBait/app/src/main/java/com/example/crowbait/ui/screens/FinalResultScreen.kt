@@ -22,26 +22,26 @@ fun FinalResultScreen(toReset: () -> Unit) {
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Card(modifier = Modifier.size(270.dp, 100.dp)) {
                     Box(contentAlignment = Alignment.Center) {
-                        if (com.example.crowbait.ui.components.battleResultCheck() == "先攻プレイヤーの勝利") {
+                        if (finalBattleResultText() == "先攻プレイヤーの勝利") {
                             Text(
                                 modifier = Modifier
                                     .background(color = Color.Yellow)
                                     .padding(start = 10.dp, end = 10.dp),
-                                text = com.example.crowbait.ui.components.battleResultCheck(),
+                                text = finalBattleResultText(),
                                 fontSize = 35.sp
                             )
-                        } else if (com.example.crowbait.ui.components.battleResultCheck() == "後攻プレイヤーの勝利") {
+                        } else if (finalBattleResultText() == "後攻プレイヤーの勝利") {
                             Text(
                                 modifier = Modifier
                                     .background(color = Color.Cyan)
                                     .padding(start = 10.dp, end = 10.dp),
-                                text = com.example.crowbait.ui.components.battleResultCheck(),
+                                text = finalBattleResultText(),
                                 fontSize = 35.sp
                             )
                         } else {
                             Text(
                                 modifier = Modifier.padding(start = 10.dp, end = 10.dp),
-                                text = com.example.crowbait.ui.components.battleResultCheck(),
+                                text = finalBattleResultText(),
                                 fontSize = 35.sp
                             )
                         }
@@ -76,6 +76,16 @@ fun FinalResultScreen(toReset: () -> Unit) {
                 }
             }
         }
+    }
+}
+
+fun finalBattleResultText(): String {
+    if(firstPlayer.score>secondPlayer.score){
+        return "先攻プレイヤーの勝利"
+    }else if(firstPlayer.score<secondPlayer.score){
+        return "後攻プレイヤーの勝利"
+    }else{
+        return "引き分け"
     }
 }
 

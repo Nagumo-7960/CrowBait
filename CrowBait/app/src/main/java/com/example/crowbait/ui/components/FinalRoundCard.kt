@@ -31,12 +31,4 @@ fun FinalRoundCard(onClick:() -> Unit){
     }
 }
 
-fun battleResultCheck(): String {
-    if(firstPlayer.score>secondPlayer.score){
-        return "先攻プレイヤーの勝利"
-    }else if(firstPlayer.score<secondPlayer.score){
-        return "後攻プレイヤーの勝利"
-    }else{
-        return "引き分け"
-    }
-}
+
