@@ -13,9 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun BattleBreakCard(toConfirm:() -> Unit) {
+fun BattleBreakCard(toConfirm: () -> Unit) {
     Column(
         modifier = Modifier
             .padding(
@@ -29,7 +30,7 @@ fun BattleBreakCard(toConfirm:() -> Unit) {
                 .size(100.dp, 50.dp)
                 .clickable(
                     enabled = true,
-                    onClick = {toConfirm()}
+                    onClick = { toConfirm() }
                 )
         ) {
             Box(
@@ -42,11 +43,14 @@ fun BattleBreakCard(toConfirm:() -> Unit) {
             }
         }
     }
+}
+
+
+@Preview
+@Composable
+fun PreviewBattleBreakCard() {
+    val navController = rememberNavController()
+    BattleBreakCard {
+        navController.navigate("home")
     }
-
-
-//@Preview
-//@Composable
-//fun PreviewBattleBreakCard(){
-//    BattleBreakCard()
-//}
+}
