@@ -60,7 +60,7 @@ fun BattleResultScreen(
                                     text = "先攻プレイヤーの得点",
                                     fontSize = 25.sp
                                 )
-                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
+                            } else if (secondPlayer.usedHandsList[battleRound - 1] < firstPlayer.usedHandsList[battleRound - 1]) {
                                 Text(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp),
