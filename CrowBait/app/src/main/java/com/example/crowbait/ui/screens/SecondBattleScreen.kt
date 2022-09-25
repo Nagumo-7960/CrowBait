@@ -72,9 +72,9 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: Batt
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                for(i in 1..11 step 5){
+                for (i in 1..11 step 5) {
                     Row(modifier = Modifier.padding(top = 20.dp)) {
-                        for (j in i..i+4) {
+                        for (j in i..i + 4) {
                             Column(modifier = Modifier.padding(start = 10.dp)) {
                                 if (secondPlayer.usedHandsList.contains(j)) {
                                     NonSelectCard(
@@ -123,19 +123,31 @@ fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel) 
 fun battleResultCheck() {
     if (deckNumber > 0) {
         //相手が15を出している時、自分が1を出したら自分の得点になる
-        if(secondPlayer.usedHandsList[battleRound-1] ==15){
-            if(firstPlayer.usedHandsList[battleRound-1]==1){
+        if (secondPlayer.usedHandsList[battleRound - 1] == 15) {
+            if (firstPlayer.usedHandsList[battleRound - 1] == 1) {
                 firstPlayer.score += deckNumber
                 winnerColor = Color.Yellow
                 return
             }
         }
-        if(firstPlayer.usedHandsList[battleRound-1] ==15){
-            if(secondPlayer.usedHandsList[battleRound-1]==1){
+        if (firstPlayer.usedHandsList[battleRound - 1] == 15) {
+            if (secondPlayer.usedHandsList[battleRound - 1] == 1) {
                 secondPlayer.score += deckNumber
                 winnerColor = Color.Cyan
                 return
             }
+        }
+
+        //相手より1だけ大きい数字の手札を出した場合は、獲得する得点が倍になる
+        if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1] + 1) {
+            firstPlayer.score += deckNumber * 2
+            winnerColor = Color.Yellow
+            return
+        }
+        if (secondPlayer.usedHandsList[battleRound - 1] == firstPlayer.usedHandsList[battleRound - 1] + 1) {
+            secondPlayer.score += deckNumber * 2
+            winnerColor = Color.Cyan
+            return
         }
 
         if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
@@ -149,20 +161,33 @@ fun battleResultCheck() {
     } else {
         //得点がマイナスの時
         //相手が15を出している時、自分が1を出したら相手の得点になる
-        if(secondPlayer.usedHandsList[battleRound-1] ==15){
-            if(firstPlayer.usedHandsList[battleRound-1]==1){
+        if (secondPlayer.usedHandsList[battleRound - 1] == 15) {
+            if (firstPlayer.usedHandsList[battleRound - 1] == 1) {
                 secondPlayer.score += deckNumber
                 winnerColor = Color.Cyan
                 return
             }
         }
-        if(firstPlayer.usedHandsList[battleRound-1] ==15){
-            if(secondPlayer.usedHandsList[battleRound-1]==1){
+        if (firstPlayer.usedHandsList[battleRound - 1] == 15) {
+            if (secondPlayer.usedHandsList[battleRound - 1] == 1) {
                 firstPlayer.score += deckNumber
                 winnerColor = Color.Yellow
                 return
             }
         }
+
+        //相手より1だけ大きい数字の手札を出した場合は、獲得する得点が倍になる
+        if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1] + 1) {
+            secondPlayer.score += deckNumber * 2
+            winnerColor = Color.Yellow
+            return
+        }
+        if (secondPlayer.usedHandsList[battleRound - 1] == firstPlayer.usedHandsList[battleRound - 1] + 1) {
+            firstPlayer.score += deckNumber * 2
+            winnerColor = Color.Cyan
+            return
+        }
+
         if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             secondPlayer.score += deckNumber
             winnerColor = Color.Yellow
