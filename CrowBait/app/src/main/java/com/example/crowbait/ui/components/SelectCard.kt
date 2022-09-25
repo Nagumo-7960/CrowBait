@@ -47,15 +47,11 @@ fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
 }
 
 @Composable
-fun NonSelectCard(selectCardNumber: Int, onClick: () -> Unit) {
+fun NonSelectCard(selectCardNumber: Int) {
     Box(contentAlignment = Alignment.Center) {
         Card(
             modifier = Modifier
-                .size(50.dp, 50.dp)
-                .clickable(
-                    enabled = false,
-                    onClick = onClick
-                ),
+                .size(50.dp, 50.dp),
             shape = CircleShape,
             backgroundColor = Color.Gray
         ) {
@@ -95,8 +91,6 @@ fun PreviewNonSelectCard() {
     val navController = rememberNavController()
     NonSelectCard(
         10,
-        onClick = {
-            navController.navigate("battle")
-        }
+
     )
 }

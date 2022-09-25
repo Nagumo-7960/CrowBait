@@ -1,136 +1,165 @@
 package com.example.crowbait.ui.screens
 
 import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.ui.components.DeckCard
-import com.example.crowbait.ui.components.FinalRoundCard
-import com.example.crowbait.ui.components.NextRoundCard
+import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
+import com.example.crowbait.ui.components.*
 
 @Composable
-fun BattleResultScreen(toFirst:() -> Unit,toFinal:() -> Unit) {
+fun BattleResultScreen(
+    toFirst: () -> Unit,
+    toFinal: () -> Unit,
+    toHome: () -> Unit,
+    viewModel: BattleScreenViewModel
+) {
     Log.d("deckNumber", "deckNumber:${deckNumber}")
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+    val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
+    BattleBreakCard(
+        toConfirm = { viewModel.changeBreakConfirmation() }
+    )
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
-            modifier = Modifier.padding(
-                top = 20.dp
-            )
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "${battleRound}回戦", fontSize = 30.sp, color = Color.White)
-        }
-        Column(
-            modifier = Modifier.padding(
-                top = 20.dp
-            )
-        ) {
-            DeckCard(deckCardNumber = deckNumber)
-        }
-        Column(modifier = Modifier.padding(top = 20.dp)) {
-            Card(modifier = Modifier.size(340.dp, 90.dp)) {
-                Box(contentAlignment = Alignment.Center) {
-                    if(deckNumber>0){
-                        if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "先攻プレイヤーの得点",
-                                fontSize = 25.sp
-                            )
-                        }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "後攻プレイヤーの得点",
-                                fontSize = 25.sp
-                            )
-                        }else{
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "引き分け",
-                                fontSize = 25.sp
-                            )
-                        }
-                    }else{
-                        if(firstPlayerHand[battleRound-1]!! > secondPlayerHand[battleRound-1]!!){
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "後攻プレイヤーの得点",
-                                fontSize = 25.sp
-                            )
-                        }else if(secondPlayerHand[battleRound-1]!! > firstPlayerHand[battleRound-1]!!){
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "先攻プレイヤーの得点",
-                                fontSize = 25.sp
-                            )
-                        }else{
-                            Text(
-                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                text = "引き分け",
-                                fontSize = 25.sp
-                            )
-                        }
-                    }
-
-                }
-            }
-        }
-        Column(modifier = Modifier.padding(top = 30.dp)) {
-            Row {
-                Column {
-                    DeckCard(deckCardNumber = firstPlayerHand[battleRound - 1])
-                    Column(modifier = Modifier.padding(top = 10.dp)) {
-                        Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                        Text(text = "得点:${firstPlayerPoint}", fontSize = 15.sp, color = Color.White)
-                    }
-                }
-                Column(modifier = Modifier.padding(start = 30.dp)) {
-                    DeckCard(deckCardNumber = secondPlayerHand[battleRound - 1])
-                    Column(modifier = Modifier.padding(top = 10.dp)) {
-                        Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                        Text(
-                            text = "得点:${secondPlayerPoint}",
-                            fontSize = 15.sp,
-                            color = Color.White
-                        )
-                    }
-                }
-            }
-        }
-        Column(modifier = Modifier.padding(top = 20.dp)) {
-            if(battleRound == deckNumberSet.size){
-                FinalRoundCard {
-                    toFinal()
-                }
-            }else{
-                NextRoundCard(
-                    onClick = {toFirst()}
+            Column(
+                modifier = Modifier.padding(
+                    top = 20.dp
                 )
+            ) {
+                Text(text = "${battleRound}回戦", fontSize = 30.sp, color = Color.White)
             }
+            Column(
+                modifier = Modifier.padding(
+                    top = 20.dp
+                )
+            ) {
+                DeckCard(deckCardNumber = deckNumber)
+            }
+            Column(modifier = Modifier.padding(top = 20.dp)) {
+                Card(
+                    modifier = Modifier
+                        .size(340.dp, 90.dp),
+                    backgroundColor = winnerColor
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        if (deckNumber > 0) {
+                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp),
+                                    text = "先攻プレイヤーの得点",
+                                    fontSize = 25.sp
+                                )
+                            } else if (secondPlayer.usedHandsList[battleRound - 1] < firstPlayer.usedHandsList[battleRound - 1]) {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp),
+                                    text = "後攻プレイヤーの得点",
+                                    fontSize = 25.sp
+                                )
+                            } else {
+                                Text(
+                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                    text = "引き分け",
+                                    fontSize = 25.sp
+                                )
+                            }
+                        } else {
+                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp),
+                                    text = "後攻プレイヤーの得点",
+                                    fontSize = 25.sp
+                                )
+                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp),
+                                    text = "先攻プレイヤーの得点",
+                                    fontSize = 25.sp
+                                )
+                            } else {
+                                Text(
+                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                    text = "引き分け",
+                                    fontSize = 25.sp
+                                )
+                            }
+                        }
+
+                    }
+                }
+            }
+            Column(modifier = Modifier.padding(top = 30.dp)) {
+                Row {
+                    Column {
+                        DeckCard(deckCardNumber = firstPlayer.usedHandsList.last())
+                        Column(modifier = Modifier.padding(top = 10.dp)) {
+                            Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
+                            Text(
+                                text = "得点:${firstPlayer.score}",
+                                fontSize = 15.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                    Column(modifier = Modifier.padding(start = 30.dp)) {
+                        DeckCard(deckCardNumber = secondPlayer.usedHandsList.last())
+                        Column(modifier = Modifier.padding(top = 10.dp)) {
+                            Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
+                            Text(
+                                text = "得点:${secondPlayer.score}",
+                                fontSize = 15.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+            Column(modifier = Modifier.padding(top = 20.dp)) {
+                if (battleRound == deckNumberList.size) {
+                    FinalRoundCard {
+                        toFinal()
+                    }
+                } else {
+                    NextRoundCard(
+                        onClick = { toFirst() }
+                    )
+                }
+            }
+        }
+        if (isBreakConfirmation == true) {
+            BreakConfirmationCard(
+                determine_button = toHome,
+                cancel_button = { viewModel.changeBreakConfirmation() }
+            )
         }
     }
 }
 
-fun roundPlus(toFirst: () -> Unit){
+fun roundPlus(toFirst: () -> Unit) {
     battleRound++
     toFirst()
     setDeckNumber()
 }
 
-@Preview
-@Composable
-fun PreviewBattleResultScreen() {
-    val navController = rememberNavController()
-    BattleResultScreen(
-        toFirst = {navController.navigate("first")},
-        toFinal = {navController.navigate("final")}
-    )
-}
+//@Preview
+//@Composable
+//fun PreviewBattleResultScreen() {
+//    val navController = rememberNavController()
+//    BattleResultScreen(
+//        toFirst = {navController.navigate("first")},
+//        toFinal = {navController.navigate("final")}
+//    )
+//}
