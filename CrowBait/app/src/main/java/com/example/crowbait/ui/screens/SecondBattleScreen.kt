@@ -122,6 +122,22 @@ fun secondChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel) 
 
 fun battleResultCheck() {
     if (deckNumber > 0) {
+        //相手が15を出している時、自分が1を出したら自分の得点になる
+        if(secondPlayer.usedHandsList[battleRound-1] ==15){
+            if(firstPlayer.usedHandsList[battleRound-1]==1){
+                firstPlayer.score += deckNumber
+                winnerColor = Color.Yellow
+                return
+            }
+        }
+        if(firstPlayer.usedHandsList[battleRound-1] ==15){
+            if(secondPlayer.usedHandsList[battleRound-1]==1){
+                secondPlayer.score += deckNumber
+                winnerColor = Color.Cyan
+                return
+            }
+        }
+
         if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             firstPlayer.score += deckNumber
             winnerColor = Color.Yellow
@@ -131,6 +147,22 @@ fun battleResultCheck() {
             winnerColor = Color.Cyan
         }
     } else {
+        //得点がマイナスの時
+        //相手が15を出している時、自分が1を出したら相手の得点になる
+        if(secondPlayer.usedHandsList[battleRound-1] ==15){
+            if(firstPlayer.usedHandsList[battleRound-1]==1){
+                secondPlayer.score += deckNumber
+                winnerColor = Color.Cyan
+                return
+            }
+        }
+        if(firstPlayer.usedHandsList[battleRound-1] ==15){
+            if(secondPlayer.usedHandsList[battleRound-1]==1){
+                firstPlayer.score += deckNumber
+                winnerColor = Color.Yellow
+                return
+            }
+        }
         if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
             secondPlayer.score += deckNumber
             winnerColor = Color.Yellow
