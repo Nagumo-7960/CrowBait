@@ -53,21 +53,21 @@ fun BattleResultScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center) {
 
-                        if(battleResultCheck_c.winPlayer == "first") {
+                        if(battleResultCheck.winPlayer == "first") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck_c.winPlayer == "second") {
+                        } else if (battleResultCheck.winPlayer == "second") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck_c.winPlayer == "none") {
+                        } else if (battleResultCheck.winPlayer == "none") {
                             Text(
                                 modifier = Modifier.padding(start = 20.dp, end = 20.dp),
                                 text = "引き分け",

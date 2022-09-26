@@ -111,7 +111,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: Batt
 fun getSecondPlayerHand(handNumber: Int, toResult: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     secondPlayer.usedHandsList.add(handNumber)
-    battleResultCheck_c.battleResultCheck(firstPlayer, secondPlayer)
+    battleResultCheck.battleResultCheck(firstPlayer, secondPlayer)
     toResult()
 }
 

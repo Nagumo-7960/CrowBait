@@ -24,7 +24,7 @@ var battleRound = 1
 var firstPlayer = Player()
 var secondPlayer = Player()
 
-val battleResultCheck_c = BattleResultCheck()
+val battleResultCheck = BattleResultCheck()
 
 @Composable
 fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
