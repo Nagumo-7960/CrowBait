@@ -21,6 +21,18 @@ fun BattleResultScreen(
     toHome: () -> Unit,
     viewModel: BattleScreenViewModel
 ) {
+    when (battleResultCheck.winPlayer) {
+        "first" -> {
+            winnerColor = Color.Yellow
+        }
+        "second" -> {
+            winnerColor = Color.Cyan
+        }
+        else -> {
+            winnerColor = Color.White
+        }
+    }
+
     Log.d("deckNumber", "deckNumber:${deckNumber}")
     val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
     BattleBreakCard(
@@ -53,7 +65,7 @@ fun BattleResultScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center) {
 
-                        if(battleResultCheck.winPlayer == "first") {
+                        if (battleResultCheck.winPlayer == "first") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
