@@ -52,52 +52,28 @@ fun BattleResultScreen(
                     backgroundColor = winnerColor
                 ) {
                     Box(contentAlignment = Alignment.Center) {
-                        if (deckNumber > 0) {
-                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "先攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else if (secondPlayer.usedHandsList[battleRound - 1] < firstPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "後攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else {
-                                Text(
-                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                    text = "引き分け",
-                                    fontSize = 25.sp
-                                )
-                            }
-                        } else {
-                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "後攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "先攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else {
-                                Text(
-                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                    text = "引き分け",
-                                    fontSize = 25.sp
-                                )
-                            }
-                        }
 
+                        if(battleResultCheck_c.winPlayer == "first") {
+                            Text(
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp),
+                                text = "先攻プレイヤーの勝ち",
+                                fontSize = 25.sp
+                            )
+                        } else if (battleResultCheck_c.winPlayer == "second") {
+                            Text(
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp),
+                                text = "後攻プレイヤーの勝ち",
+                                fontSize = 25.sp
+                            )
+                        } else if (battleResultCheck_c.winPlayer == "none") {
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "引き分け",
+                                fontSize = 25.sp
+                            )
+                        }
                     }
                 }
             }
