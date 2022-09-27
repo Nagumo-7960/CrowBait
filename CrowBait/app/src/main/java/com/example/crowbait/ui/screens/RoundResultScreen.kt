@@ -15,12 +15,24 @@ import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 @Composable
-fun BattleResultScreen(
+fun roundResultScreen(
     toFirst: () -> Unit,
     toFinal: () -> Unit,
     toHome: () -> Unit,
     viewModel: BattleScreenViewModel
 ) {
+    when (battleResultCheck.winPlayer) {
+        "first" -> {
+            winnerColor = Color.Yellow
+        }
+        "second" -> {
+            winnerColor = Color.Cyan
+        }
+        else -> {
+            winnerColor = Color.White
+        }
+    }
+
     Log.d("deckNumber", "deckNumber:${deckNumber}")
     val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
     BattleBreakCard(
@@ -52,52 +64,28 @@ fun BattleResultScreen(
                     backgroundColor = winnerColor
                 ) {
                     Box(contentAlignment = Alignment.Center) {
-                        if (deckNumber > 0) {
-                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "先攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else if (secondPlayer.usedHandsList[battleRound - 1] < firstPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "後攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else {
-                                Text(
-                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                    text = "引き分け",
-                                    fontSize = 25.sp
-                                )
-                            }
-                        } else {
-                            if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "後攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
-                                Text(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp),
-                                    text = "先攻プレイヤーの得点",
-                                    fontSize = 25.sp
-                                )
-                            } else {
-                                Text(
-                                    modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                                    text = "引き分け",
-                                    fontSize = 25.sp
-                                )
-                            }
-                        }
 
+                        if (battleResultCheck.winPlayer == "first") {
+                            Text(
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp),
+                                text = "先攻プレイヤーの勝ち",
+                                fontSize = 25.sp
+                            )
+                        } else if (battleResultCheck.winPlayer == "second") {
+                            Text(
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp),
+                                text = "後攻プレイヤーの勝ち",
+                                fontSize = 25.sp
+                            )
+                        } else if (battleResultCheck.winPlayer == "none") {
+                            Text(
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+                                text = "引き分け",
+                                fontSize = 25.sp
+                            )
+                        }
                     }
                 }
             }
