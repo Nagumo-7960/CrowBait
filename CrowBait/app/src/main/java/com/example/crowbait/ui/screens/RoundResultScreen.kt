@@ -15,7 +15,7 @@ import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 @Composable
-fun BattleResultScreen(
+fun RoundResultScreen(
     toFirst: () -> Unit,
     toFinal: () -> Unit,
     toHome: () -> Unit,
