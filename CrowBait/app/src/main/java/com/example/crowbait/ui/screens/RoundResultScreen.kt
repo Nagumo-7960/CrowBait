@@ -21,7 +21,7 @@ fun roundResultScreen(
     toHome: () -> Unit,
     viewModel: BattleScreenViewModel
 ) {
-    when (battleResultCheck.winPlayer) {
+    when (roundResultCheck.winPlayer) {
         "first" -> {
             winnerColor = Color.Yellow
         }
@@ -65,21 +65,21 @@ fun roundResultScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center) {
 
-                        if (battleResultCheck.winPlayer == "first") {
+                        if (roundResultCheck.winPlayer == "first") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck.winPlayer == "second") {
+                        } else if (roundResultCheck.winPlayer == "second") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck.winPlayer == "none") {
+                        } else if (roundResultCheck.winPlayer == "none") {
                             Text(
                                 modifier = Modifier.padding(start = 20.dp, end = 20.dp),
                                 text = "引き分け",
