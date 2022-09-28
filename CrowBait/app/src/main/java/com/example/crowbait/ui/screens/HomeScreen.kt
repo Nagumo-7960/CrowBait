@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.model.BattleResultCheck
+import com.example.crowbait.model.RoundResultCheck
 import com.example.crowbait.model.Player
 
 //test用
@@ -24,7 +24,7 @@ var battleRound = 1
 var firstPlayer = Player()
 var secondPlayer = Player()
 
-val battleResultCheck = BattleResultCheck()
+val roundResultCheck = RoundResultCheck()
 
 @Composable
 fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
