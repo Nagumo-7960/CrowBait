@@ -5,11 +5,11 @@ import com.example.crowbait.ui.screens.battleRound
 import com.example.crowbait.ui.screens.deckNumber
 import com.example.crowbait.ui.screens.winnerColor
 
-class BattleResultCheck {
+class RoundResultCheck {
 
     var winPlayer:String = ""
 
-    fun battleResultCheck(firstPlayer: Player,secondPlayer: Player){
+    fun roundResultCheck(firstPlayer: Player, secondPlayer: Player){
         if(firstPlayer.usedHandsList[battleRound-1]==secondPlayer.usedHandsList[battleRound-1]){
             winPlayer = "none"
         }

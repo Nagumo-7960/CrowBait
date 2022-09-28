@@ -15,13 +15,13 @@ import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 @Composable
-fun BattleResultScreen(
+fun RoundResultScreen(
     toFirst: () -> Unit,
     toFinal: () -> Unit,
     toHome: () -> Unit,
     viewModel: BattleScreenViewModel
 ) {
-    when (battleResultCheck.winPlayer) {
+    when (roundResultCheck.winPlayer) {
         "first" -> {
             winnerColor = Color.Yellow
         }
@@ -65,21 +65,21 @@ fun BattleResultScreen(
                 ) {
                     Box(contentAlignment = Alignment.Center) {
 
-                        if (battleResultCheck.winPlayer == "first") {
+                        if (roundResultCheck.winPlayer == "first") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "先攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck.winPlayer == "second") {
+                        } else if (roundResultCheck.winPlayer == "second") {
                             Text(
                                 modifier = Modifier
                                     .padding(start = 20.dp, end = 20.dp),
                                 text = "後攻プレイヤーの勝ち",
                                 fontSize = 25.sp
                             )
-                        } else if (battleResultCheck.winPlayer == "none") {
+                        } else if (roundResultCheck.winPlayer == "none") {
                             Text(
                                 modifier = Modifier.padding(start = 20.dp, end = 20.dp),
                                 text = "引き分け",

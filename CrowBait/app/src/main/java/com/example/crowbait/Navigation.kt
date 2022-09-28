@@ -50,7 +50,7 @@ fun Navigation(navController: NavHostController) {
 
         composable("result") {
             val viewModel: BattleScreenViewModel = BattleScreenViewModel()
-            BattleResultScreen(
+            RoundResultScreen(
                 toFirst = { navController.navigate("first") },
                 toHome = {navController.navigate("home")},
                 toFinal = { navController.navigate("final") },
