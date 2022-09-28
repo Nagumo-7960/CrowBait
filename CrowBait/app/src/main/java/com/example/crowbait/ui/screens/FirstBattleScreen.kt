@@ -93,7 +93,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
             HandConfirmationCard(
                 determine_button = { getFirstPlayerHand(firstCardSet,toSecond) },
                 cancel_button = { viewModel.changeBattleConfirmation() },
-                deckCardNumber = firstCardSet
+                handCardNumber = firstCardSet
             )
         }
         if(isBreakConfirmation == true){

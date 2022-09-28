@@ -16,14 +16,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HandConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit, deckCardNumber: Int?) {
+fun HandConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit, handCardNumber: Int?) {
     Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = "確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "${deckCardNumber}を選択していいですか？", fontSize = 20.sp)
+            Text(text = "${handCardNumber}を選択していいですか？", fontSize = 20.sp)
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Card(
@@ -132,6 +132,6 @@ fun PreviewConfirmationCard() {
         cancel_button = {
             navController.navigate("battle")
         },
-        deckCardNumber = 1
+        handCardNumber = 1
     )
 }

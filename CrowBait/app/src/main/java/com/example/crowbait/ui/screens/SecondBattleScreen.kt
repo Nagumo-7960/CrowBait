@@ -96,7 +96,7 @@ fun SecondBattleScreen(toResult: () -> Unit, toHome: () -> Unit, viewModel: Batt
             HandConfirmationCard(
                 determine_button = { getSecondPlayerHand(secondCardSet, toResult) },
                 cancel_button = { viewModel.changeBattleConfirmation() },
-                deckCardNumber = secondCardSet
+                handCardNumber = secondCardSet
             )
         }
         if (isBreakConfirmation == true) {
