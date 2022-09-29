@@ -11,18 +11,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.crowbait.ui.screens.battleRound
 import com.example.crowbait.ui.screens.roundPlus
 
 @Composable
-fun NextRoundCard(onClick:() -> Unit){
-    Card(modifier = Modifier.size(80.dp, 40.dp)
+fun NextRoundCard(onClick: () -> Unit) {
+    Card(modifier = Modifier
+        .size(80.dp, 40.dp)
         .clickable(
             enabled = true,
-            onClick = { roundPlus { onClick()} }
+            onClick = { roundPlus { onClick() } }
         )
     ) {
-        Box(contentAlignment = Alignment.Center){
+        Box(contentAlignment = Alignment.Center) {
             Text(
                 modifier = Modifier.padding(start = 5.dp, end = 5.dp),
                 text = "次へ",

@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DeckCard(deckCardNumber: Int?){
+fun DeckCard(deckCardNumber: Int?) {
     Card(
         modifier = Modifier
             .size(100.dp, 200.dp)

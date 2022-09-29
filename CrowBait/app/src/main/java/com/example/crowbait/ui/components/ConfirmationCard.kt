@@ -16,7 +16,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HandConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit, handCardNumber: Int?) {
+fun HandConfirmationCard(
+    determine_button: () -> Unit,
+    cancel_button: () -> Unit,
+    handCardNumber: Int?
+) {
     Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),

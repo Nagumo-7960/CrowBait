@@ -17,8 +17,10 @@ import com.example.crowbait.ui.components.NewGameCard
 @Composable
 fun FinalResultScreen(toReset: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
-//        BattleBreakCard()
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Column(modifier = Modifier.padding(top = 20.dp)) {
                 Card(modifier = Modifier.size(270.dp, 100.dp)) {
                     Box(contentAlignment = Alignment.Center) {
@@ -80,11 +82,11 @@ fun FinalResultScreen(toReset: () -> Unit) {
 }
 
 fun finalBattleResultText(): String {
-    if(firstPlayer.score>secondPlayer.score){
+    if (firstPlayer.score > secondPlayer.score) {
         return "先攻プレイヤーの勝利"
-    }else if(firstPlayer.score<secondPlayer.score){
+    } else if (firstPlayer.score < secondPlayer.score) {
         return "後攻プレイヤーの勝利"
-    }else{
+    } else {
         return "引き分け"
     }
 }

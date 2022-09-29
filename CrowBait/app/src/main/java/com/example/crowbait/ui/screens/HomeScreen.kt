@@ -11,13 +11,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.crowbait.model.RoundResultCheck
 import com.example.crowbait.model.Player
+import com.example.crowbait.model.RoundResultCheck
 
 //test用
 //var deckNumberList = arrayOf(-1, 1)
 
-var deckNumberList = arrayOf(-1,-2,-3,-4,-5,1,2,3,4,5,6,7,8,9,10)
+var deckNumberList = arrayOf(-1, -2, -3, -4, -5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 var deckNumber = 1
 var battleRound = 1
 
@@ -34,7 +34,8 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
 
         Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
             Card(
-                modifier = Modifier.size(100.dp, 50.dp)
+                modifier = Modifier
+                    .size(100.dp, 50.dp)
                     .clickable(
                         enabled = true,
                         onClick = toCheckRule
@@ -124,8 +125,8 @@ fun resetSetting(firstPlayer: Player, secondPlayer: Player) {
 @Composable
 fun PreviewHomeScreen() {
     val navController = rememberNavController()
-    HomeScreen (
-        toCheckRule = {navController.navigate("first")},
-        toStart = {navController.navigate("first")}
+    HomeScreen(
+        toCheckRule = { navController.navigate("first") },
+        toStart = { navController.navigate("first") }
     )
 }

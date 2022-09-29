@@ -92,5 +92,5 @@ fun PreviewNonSelectCard() {
     NonSelectCard(
         10,
 
-    )
+        )
 }

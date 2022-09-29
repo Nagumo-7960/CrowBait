@@ -14,8 +14,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun CheckRuleScreen(toBack:() -> Unit){
-    Column(modifier = Modifier.fillMaxSize()){
+fun CheckRuleScreen(toBack: () -> Unit) {
+    Column(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
             Card(
                 modifier = Modifier
@@ -36,14 +36,14 @@ fun CheckRuleScreen(toBack:() -> Unit){
             }
         }
     }
-    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()){
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         Text(text = "ルール説明", color = Color.White)
     }
 }
 
 @Preview
 @Composable
-fun PreviewCheckRule(){
+fun PreviewCheckRule() {
     val navController = rememberNavController()
-    CheckRuleScreen{navController.navigate("home")}
+    CheckRuleScreen { navController.navigate("home") }
 }
