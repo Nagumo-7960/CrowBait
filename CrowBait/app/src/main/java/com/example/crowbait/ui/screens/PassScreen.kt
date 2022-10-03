@@ -9,8 +9,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.BattleBreakCard
 import com.example.crowbait.ui.components.BreakConfirmationCard
@@ -61,9 +63,14 @@ fun PassScreen(toSecond: () -> Unit, toHome: () -> Unit, viewModel: BattleScreen
 }
 
 
-//@Preview
-//@Composable
-//fun PreviewPassScreen(){
-//    val navController = rememberNavController()
-//    PassScreen{navController.navigate("second")}
-//}
+@Preview
+@Composable
+fun PreviewPassScreen(){
+    val navController = rememberNavController()
+    val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+    PassScreen(
+        toSecond = {navController.navigate("second")},
+        toHome = {navController.navigate("home")},
+        viewModel=viewModel
+    )
+}
