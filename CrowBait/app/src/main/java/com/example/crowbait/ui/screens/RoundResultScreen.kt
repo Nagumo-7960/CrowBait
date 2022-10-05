@@ -9,8 +9,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
@@ -142,12 +144,15 @@ fun roundPlus(toFirst: () -> Unit) {
     setDeckNumber()
 }
 
-//@Preview
-//@Composable
-//fun PreviewBattleResultScreen() {
-//    val navController = rememberNavController()
-//    BattleResultScreen(
-//        toFirst = {navController.navigate("first")},
-//        toFinal = {navController.navigate("final")}
-//    )
-//}
+@Preview
+@Composable
+fun PreviewBattleResultScreen() {
+    val navController = rememberNavController()
+    val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+    RoundResultScreen(
+        toFirst = {navController.navigate("first")},
+        toFinal = {navController.navigate("final")},
+        toHome = {navController.navigate("home")},
+        viewModel = viewModel
+    )
+}
