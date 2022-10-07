@@ -148,11 +148,12 @@ fun roundPlus(toFirst: () -> Unit) {
 @Composable
 fun PreviewBattleResultScreen() {
     val navController = rememberNavController()
-    val viewModel: BattleScreenViewModel = BattleScreenViewModel()
+    firstPlayer.usedHandsList.add(1)
+    secondPlayer.usedHandsList.add(1)
     RoundResultScreen(
         toFirst = {navController.navigate("first")},
         toFinal = {navController.navigate("final")},
         toHome = {navController.navigate("home")},
-        viewModel = viewModel
+        viewModel = BattleScreenViewModel()
     )
 }
