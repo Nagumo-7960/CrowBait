@@ -45,10 +45,12 @@ class RoundResultCheck {
             if (com.example.crowbait.ui.screens.firstPlayer.usedHandsList[battleRound - 1] > com.example.crowbait.ui.screens.secondPlayer.usedHandsList[battleRound - 1]) {
                 com.example.crowbait.ui.screens.firstPlayer.score += deckNumber
                 winPlayer = "first"
+                return
             }
             if (com.example.crowbait.ui.screens.secondPlayer.usedHandsList[battleRound - 1] > com.example.crowbait.ui.screens.firstPlayer.usedHandsList[battleRound - 1]) {
                 com.example.crowbait.ui.screens.secondPlayer.score += deckNumber
                 winPlayer = "second"
+                return
             }
         } else {
             //得点がマイナスの時
@@ -83,10 +85,12 @@ class RoundResultCheck {
             if (com.example.crowbait.ui.screens.firstPlayer.usedHandsList[battleRound - 1] > com.example.crowbait.ui.screens.secondPlayer.usedHandsList[battleRound - 1]) {
                 com.example.crowbait.ui.screens.secondPlayer.score += deckNumber
                 winPlayer = "first"
+                return
             }
             if (com.example.crowbait.ui.screens.secondPlayer.usedHandsList[battleRound - 1] > com.example.crowbait.ui.screens.firstPlayer.usedHandsList[battleRound - 1]) {
                 com.example.crowbait.ui.screens.firstPlayer.score += deckNumber
                 winPlayer = "second"
+                return
             }
 
         }
