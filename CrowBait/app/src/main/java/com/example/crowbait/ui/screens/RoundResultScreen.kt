@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.model.RoundResultCheck
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
@@ -146,10 +147,11 @@ fun roundPlus(toFirst: () -> Unit) {
 
 @Preview
 @Composable
-fun PreviewBattleResultScreen() {
+fun PreviewRoundResultScreen() {
     val navController = rememberNavController()
     firstPlayer.usedHandsList.add(1)
     secondPlayer.usedHandsList.add(1)
+    roundResultCheck.roundResultCheck(firstPlayer, secondPlayer)
     RoundResultScreen(
         toFirst = {navController.navigate("first")},
         toFinal = {navController.navigate("final")},
