@@ -98,13 +98,20 @@ fun RoundResultScreen(
                         DeckCard(deckCardNumber = firstPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            if(roundResultCheck.winPlayer=="first"){
+                            if(roundResultCheck.winPlayer=="first" && deckNumber>0){
                                 Text(
-                                    text = "得点:${firstPlayer.score- deckNumber}→${firstPlayer.score}",
+                                    text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }else{
+                            }else if(roundResultCheck.winPlayer=="second" && deckNumber<0){
+                                Text(
+                                    text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
+                            else{
                                 Text(
                                     text = "得点:${firstPlayer.score}",
                                     fontSize = 15.sp,
@@ -117,13 +124,20 @@ fun RoundResultScreen(
                         DeckCard(deckCardNumber = secondPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            if(roundResultCheck.winPlayer=="second"){
+                            if(roundResultCheck.winPlayer=="second" && deckNumber>0){
                                 Text(
                                     text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }else{
+                            }else if(roundResultCheck.winPlayer=="first" && deckNumber<0){
+                                Text(
+                                    text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
+                            else{
                                 Text(
                                     text = "得点:${secondPlayer.score}",
                                     fontSize = 15.sp,
