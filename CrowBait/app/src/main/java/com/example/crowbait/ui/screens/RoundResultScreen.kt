@@ -98,22 +98,52 @@ fun RoundResultScreen(
                         DeckCard(deckCardNumber = firstPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            Text(
-                                text = "得点:${firstPlayer.score}",
-                                fontSize = 15.sp,
-                                color = Color.White
-                            )
+                            if(roundResultCheck.winPlayer=="first" && deckNumber>0){
+                                Text(
+                                    text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }else if(roundResultCheck.winPlayer=="second" && deckNumber<0){
+                                Text(
+                                    text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
+                            else{
+                                Text(
+                                    text = "得点:${firstPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
                         }
                     }
                     Column(modifier = Modifier.padding(start = 30.dp)) {
                         DeckCard(deckCardNumber = secondPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            Text(
-                                text = "得点:${secondPlayer.score}",
-                                fontSize = 15.sp,
-                                color = Color.White
-                            )
+                            if(roundResultCheck.winPlayer=="second" && deckNumber>0){
+                                Text(
+                                    text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }else if(roundResultCheck.winPlayer=="first" && deckNumber<0){
+                                Text(
+                                    text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
+                            else{
+                                Text(
+                                    text = "得点:${secondPlayer.score}",
+                                    fontSize = 15.sp,
+                                    color = Color.White
+                                )
+                            }
                         }
                     }
                 }
@@ -149,8 +179,8 @@ fun roundPlus(toFirst: () -> Unit) {
 @Composable
 fun PreviewRoundResultScreen() {
     val navController = rememberNavController()
-    firstPlayer.usedHandsList.add(1)
-    secondPlayer.usedHandsList.add(1)
+    firstPlayer.usedHandsList.add(5)
+    secondPlayer.usedHandsList.add(3)
     roundResultCheck.roundResultCheck(firstPlayer, secondPlayer)
     RoundResultScreen(
         toFirst = {navController.navigate("first")},
