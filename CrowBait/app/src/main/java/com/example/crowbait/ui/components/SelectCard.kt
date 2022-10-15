@@ -40,33 +40,24 @@ fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
                     text = selectCardNumber.toString(), fontSize = 20.sp
                 )
             }
-
         }
     }
 
 }
 
 @Composable
-fun BigSelectCard(selectCardNumber: Int){
+fun BigSelectCard(selectCardNumber: Int) {
     Box(contentAlignment = Alignment.Center) {
         Card(
             modifier = Modifier
-                .size(50.dp, 50.dp),
+                .size(150.dp, 150.dp),
             shape = CircleShape,
         ) {
-            //手動でテキストの位置を調整しているので、要修正
-            if (selectCardNumber < 10) {
+            Box(contentAlignment = Alignment.Center) {
                 Text(
-                    modifier = Modifier.padding(top = 10.dp, start = 18.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp
-                )
-            } else {
-                Text(
-                    modifier = Modifier.padding(top = 10.dp, start = 13.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp
+                    text = selectCardNumber.toString(), fontSize = 80.sp
                 )
             }
-
         }
     }
 }
@@ -116,6 +107,26 @@ fun PreviewNonSelectCard() {
     val navController = rememberNavController()
     NonSelectCard(
         10,
+
+        )
+}
+
+@Preview
+@Composable
+fun PreviewBigSelectCard_10() {
+    val navController = rememberNavController()
+    BigSelectCard(
+        10,
+
+        )
+}
+
+@Preview
+@Composable
+fun PreviewBigSelectCard_5() {
+    val navController = rememberNavController()
+    BigSelectCard(
+        5,
 
         )
 }

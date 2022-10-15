@@ -95,7 +95,7 @@ fun RoundResultScreen(
             Column(modifier = Modifier.padding(top = 30.dp)) {
                 Row {
                     Column {
-                        DeckCard(deckCardNumber = firstPlayer.usedHandsList.last())
+                        BigSelectCard(selectCardNumber = firstPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             if(roundResultCheck.winPlayer=="first" && deckNumber>0){
@@ -121,7 +121,7 @@ fun RoundResultScreen(
                         }
                     }
                     Column(modifier = Modifier.padding(start = 30.dp)) {
-                        DeckCard(deckCardNumber = secondPlayer.usedHandsList.last())
+                        BigSelectCard(selectCardNumber = secondPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             if(roundResultCheck.winPlayer=="second" && deckNumber>0){
