@@ -47,6 +47,31 @@ fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
 }
 
 @Composable
+fun BigSelectCard(selectCardNumber: Int){
+    Box(contentAlignment = Alignment.Center) {
+        Card(
+            modifier = Modifier
+                .size(50.dp, 50.dp),
+            shape = CircleShape,
+        ) {
+            //手動でテキストの位置を調整しているので、要修正
+            if (selectCardNumber < 10) {
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 18.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp
+                )
+            } else {
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 13.dp),
+                    text = selectCardNumber.toString(), fontSize = 20.sp
+                )
+            }
+
+        }
+    }
+}
+
+@Composable
 fun NonSelectCard(selectCardNumber: Int) {
     Box(contentAlignment = Alignment.Center) {
         Card(
