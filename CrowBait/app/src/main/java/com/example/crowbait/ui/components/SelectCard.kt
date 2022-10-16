@@ -28,17 +28,16 @@ fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
                 ),
             shape = CircleShape,
         ) {
-            //手動でテキストの位置を調整しているので、要修正
-            if (selectCardNumber < 10) {
-                Text(
-                    modifier = Modifier.padding(top = 10.dp, start = 18.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp
-                )
-            } else {
-                Text(
-                    modifier = Modifier.padding(top = 10.dp, start = 13.dp),
-                    text = selectCardNumber.toString(), fontSize = 20.sp
-                )
+            Box(contentAlignment = Alignment.Center){
+                if (selectCardNumber < 10) {
+                    Text(
+                        text = selectCardNumber.toString(), fontSize = 20.sp
+                    )
+                } else {
+                    Text(
+                        text = selectCardNumber.toString(), fontSize = 20.sp
+                    )
+                }
             }
         }
     }
