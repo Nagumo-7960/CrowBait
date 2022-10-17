@@ -16,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
-var secondCardSet = 1
+private var secondCardSet = 1
 var winnerColor: Color = Color.White
 
 @Composable

@@ -17,7 +17,7 @@ import com.example.crowbait.ui.ViewModel.BattleScreenViewModel
 import com.example.crowbait.ui.components.*
 
 
-var firstCardSet = 1
+private var firstCardSet = 1
 
 @Composable
 fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleScreenViewModel) {
