@@ -5,11 +5,11 @@ import com.example.crowbait.ui.screens.deckNumber
 
 class RoundResultCheck {
 
-    var winPlayer: String = ""
+    var winner: String = ""
 
     fun roundResultCheck(firstPlayer: Player, secondPlayer: Player) {
         if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1]) {
-            winPlayer = "none"
+            winner = "none"
         }
         if (deckNumber > 0) {
             //相手が15を出している時、自分が1を出したら自分の得点になる
@@ -17,7 +17,7 @@ class RoundResultCheck {
                 if (firstPlayer.usedHandsList[battleRound - 1] == 1) {
                     firstPlayer.previousScore = firstPlayer.score
                     firstPlayer.score += deckNumber
-                    winPlayer = "first"
+                    winner = "first"
                     return
                 }
             }
@@ -25,7 +25,7 @@ class RoundResultCheck {
                 if (secondPlayer.usedHandsList[battleRound - 1] == 1) {
                     secondPlayer.previousScore = secondPlayer.score
                     secondPlayer.score += deckNumber
-                    winPlayer = "second"
+                    winner = "second"
                     return
                 }
             }
@@ -34,26 +34,26 @@ class RoundResultCheck {
             if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1] + 1) {
                 firstPlayer.previousScore = firstPlayer.score
                 firstPlayer.score += deckNumber * 2
-                winPlayer = "first"
+                winner = "first"
                 return
             }
             if (secondPlayer.usedHandsList[battleRound - 1] == firstPlayer.usedHandsList[battleRound - 1] + 1) {
                 secondPlayer.previousScore = secondPlayer.score
                 secondPlayer.score += deckNumber * 2
-                winPlayer = "second"
+                winner = "second"
                 return
             }
 
             if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
                 firstPlayer.previousScore = firstPlayer.score
                 firstPlayer.score += deckNumber
-                winPlayer = "first"
+                winner = "first"
                 return
             }
             if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
                 secondPlayer.previousScore = secondPlayer.score
                 secondPlayer.score += deckNumber
-                winPlayer = "second"
+                winner = "second"
                 return
             }
         } else {
@@ -63,7 +63,7 @@ class RoundResultCheck {
                 if (firstPlayer.usedHandsList[battleRound - 1] == 1) {
                     secondPlayer.previousScore = secondPlayer.score
                     secondPlayer.score += deckNumber
-                    winPlayer = "first"
+                    winner = "first"
                     return
                 }
             }
@@ -71,7 +71,7 @@ class RoundResultCheck {
                 if (secondPlayer.usedHandsList[battleRound - 1] == 1) {
                     firstPlayer.previousScore = firstPlayer.score
                     firstPlayer.score += deckNumber
-                    winPlayer = "second"
+                    winner = "second"
                     return
                 }
             }
@@ -80,26 +80,26 @@ class RoundResultCheck {
             if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1] + 1) {
                 secondPlayer.previousScore = secondPlayer.score
                 secondPlayer.score += deckNumber * 2
-                winPlayer = "first"
+                winner = "first"
                 return
             }
             if (secondPlayer.usedHandsList[battleRound - 1] == firstPlayer.usedHandsList[battleRound - 1] + 1) {
                 firstPlayer.previousScore = firstPlayer.score
                 firstPlayer.score += deckNumber * 2
-                winPlayer = "second"
+                winner = "second"
                 return
             }
 
             if (firstPlayer.usedHandsList[battleRound - 1] > secondPlayer.usedHandsList[battleRound - 1]) {
                 secondPlayer.previousScore = secondPlayer.score
                 secondPlayer.score += deckNumber
-                winPlayer = "first"
+                winner = "first"
                 return
             }
             if (secondPlayer.usedHandsList[battleRound - 1] > firstPlayer.usedHandsList[battleRound - 1]) {
                 firstPlayer.previousScore = firstPlayer.score
                 firstPlayer.score += deckNumber
-                winPlayer = "second"
+                winner = "second"
                 return
             }
 
