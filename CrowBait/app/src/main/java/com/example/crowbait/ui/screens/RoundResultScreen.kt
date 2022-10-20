@@ -125,13 +125,13 @@ fun RoundResultScreen(
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
                             if(roundResultCheck.winner=="second" && deckNumber>0){
                                 Text(
-                                    text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
+                                    text = "得点:${secondPlayer.previousScore}→${secondPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
                             }else if(roundResultCheck.winner=="first" && deckNumber<0){
                                 Text(
-                                    text = "得点:${secondPlayer.score- deckNumber}→${secondPlayer.score}",
+                                    text = "得点:${secondPlayer.previousScore}→${secondPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )

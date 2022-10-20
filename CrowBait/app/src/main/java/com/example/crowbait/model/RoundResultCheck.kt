@@ -34,14 +34,12 @@ class RoundResultCheck {
             //相手より1だけ大きい数字の手札を出した場合は、獲得する得点が倍になる
             if (firstPlayer.usedHandsList[battleRound - 1] == secondPlayer.usedHandsList[battleRound - 1] + 1) {
                 firstPlayer.previousScore = firstPlayer.score
-                Log.d("previousScore", "${firstPlayer.previousScore}")
                 firstPlayer.score += deckNumber * 2
                 winner = "first"
                 return
             }
             if (secondPlayer.usedHandsList[battleRound - 1] == firstPlayer.usedHandsList[battleRound - 1] + 1) {
                 secondPlayer.previousScore = secondPlayer.score
-                Log.d("previousScore", "${secondPlayer.previousScore}")
                 secondPlayer.score += deckNumber * 2
                 winner = "second"
                 return
