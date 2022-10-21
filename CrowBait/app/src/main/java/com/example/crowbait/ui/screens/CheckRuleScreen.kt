@@ -2,6 +2,7 @@ package com.example.crowbait.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,82 +17,86 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun CheckRuleScreen(toBack: () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
-            Card(
-                modifier = Modifier
-                    .size(100.dp, 50.dp)
-                    .clickable(
-                        enabled = true,
-                        onClick = toBack
-                    )
-            ) {
-                Box(
-                    contentAlignment = Alignment.Center
+    LazyColumn(){
+        item {
+            Column(modifier = Modifier.fillMaxSize()) {
+                Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
+                    Card(
+                        modifier = Modifier
+                            .size(100.dp, 50.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = toBack
+                            )
+                    ) {
+                        Box(
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "もどる",
+                                fontSize = 15.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 20.dp, start = 20.dp, bottom = 20.dp, end = 20.dp)
                 ) {
-                    Text(
-                        text = "もどる",
-                        fontSize = 15.sp,
-                        color = Color.White
-                    )
+                    Column {
+                        Text(
+                            text = "基本的なルール",
+                            fontSize = 35.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                    }
+                    Column(modifier = Modifier.padding(top = 20.dp)) {
+                        Text(
+                            text = "ゲームの流れ",
+                            fontSize = 35.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "-1~10までの数字のうち、1枚ずつ山札から選ばれる",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "先行プレイヤーが手札を選ぶ→後攻プレイヤーが手札を選ぶ→対戦結果が出る",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "これを手札の枚数15回繰り返し、最終的に得点が多かったプレイヤーの勝利",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                    }
+                    Column(modifier = Modifier.padding(top = 20.dp)) {
+                        Text(
+                            text = "操作説明",
+                            fontSize = 35.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                        Text(
+                            text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
+                            fontSize = 20.sp,
+                            color = Color.White
+                        )
+                    }
+
                 }
             }
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 20.dp, start = 20.dp, bottom = 20.dp, end = 20.dp)
-        ) {
-            Column {
-                Text(
-                    text = "基本的なルール",
-                    fontSize = 35.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
-            }
-            Column(modifier = Modifier.padding(top = 20.dp)) {
-                Text(
-                    text = "ゲームの流れ",
-                    fontSize = 35.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = "-1~10までの数字のうち、1枚ずつ山札から選ばれる",
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
-                Text(
-                    text = "先行プレイヤーが手札を選ぶ→後攻プレイヤーが手札を選ぶ→対戦結果が出る",
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
-                Text(
-                    text = "これを手札の枚数15回繰り返し、最終的に得点が多かったプレイヤーの勝利",
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
-            }
-            Column(modifier = Modifier.padding(top = 20.dp)) {
-                Text(
-                    text = "操作説明",
-                    fontSize = 35.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
-            }
-
         }
     }
 }
