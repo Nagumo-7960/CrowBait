@@ -7,7 +7,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,9 +34,47 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                 }
             }
         }
-    }
-    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-        Text(text = "ルール説明", color = Color.White)
+        Column(modifier = Modifier.fillMaxSize()) {
+            Column {
+                Text(
+                    text = "基本的なルール",
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
+                    fontSize = 15.sp
+                )
+            }
+            Column {
+                Text(
+                    text = "ゲームの流れ",
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = "-1~10までの数字のうち、1枚ずつ山札から選ばれる",
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = "先行プレイヤーが手札を選ぶ→後攻プレイヤーが手札を選ぶ→対戦結果が出る",
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = "これを手札の枚数15回繰り返し、最終的に得点が多かったプレイヤーの勝利",
+                    fontSize = 15.sp
+                )
+            }
+            Column {
+                Text(
+                    text = "操作説明",
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
+                    fontSize = 15.sp
+                )
+            }
+
+        }
     }
 }
 
