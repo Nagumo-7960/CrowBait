@@ -34,8 +34,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                         ) {
                             Text(
                                 text = "もどる",
-                                fontSize = 15.sp,
-                                color = Color.White
+                                fontSize = 15.sp
                             )
                         }
                     }
