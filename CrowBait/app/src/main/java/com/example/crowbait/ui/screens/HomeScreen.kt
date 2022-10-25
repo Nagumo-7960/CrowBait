@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -7,10 +8,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.crowbait.R
 import com.example.crowbait.model.Player
 import com.example.crowbait.model.RoundResultCheck
 
@@ -59,21 +62,14 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
             Column(
                 modifier = Modifier
                     .padding(
-                        top = 20.dp
+                        top = 200.dp
                     )
             ) {
-                Card(
-                    modifier = Modifier
-                        .size(100.dp, 200.dp)
-                ) {
-                    Box(
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Deck",
-                            fontSize = 30.sp
-                        )
-                    }
+                Box(contentAlignment = Alignment.Center){
+                    Image(
+                        painter = painterResource(id = R.drawable.titlelogo),
+                        contentDescription = ""
+                    )
                 }
             }
 
