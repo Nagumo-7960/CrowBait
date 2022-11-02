@@ -67,7 +67,7 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
             ) {
                 Box(contentAlignment = Alignment.Center){
                     Image(
-                        painter = painterResource(id = R.drawable.titlelogo),
+                        painter = painterResource(id = R.drawable.titlelogo_black),
                         contentDescription = ""
                     )
                 }
