@@ -1,6 +1,12 @@
 # シンプルで奥の深い心理戦を楽しむカードゲーム「CrowBait」
 CrowBaitは，1体1で対戦を楽しむカードゲームアプリです．
 
+<p>
+  <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169121-f7c25649-fb12-4cbf-afbe-9f54bc009fe3.png"　width="20%">
+  <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169074-d217af7f-a34b-45aa-ab87-b2fb23c55582.png"　width="20%">
+  <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169013-2b5c7546-c958-46e3-8f24-20ea4fce7535.png"　width="20%">
+</p>
+
 ## 基本ルール
 CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。
 
