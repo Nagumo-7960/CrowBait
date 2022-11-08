@@ -1,5 +1,6 @@
 package com.example.crowbait.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,113 +22,137 @@ fun HandConfirmationCard(
     cancel_button: () -> Unit,
     handCardNumber: Int?
 ) {
-    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
-        Column(
-            modifier = Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = "確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "${handCardNumber}を選択していいですか？", fontSize = 20.sp)
-            Column(modifier = Modifier.padding(top = 20.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Card(
-                        elevation = 4.dp,
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = cancel_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0x80000000))
+            .clickable(enabled = true, onClick = cancel_button),
+        contentAlignment = Alignment.Center
+    ) {
+        Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
+            Column(
+                modifier = Modifier.padding(top = 20.dp),
+            ) {
+                Column(modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                    Text(text = "手札確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Column(modifier = Modifier.padding(top = 10.dp)) {
+                        Text(text = "${handCardNumber}を選択してもよろしいですか？", fontSize = 20.sp)
+                    }
+                }
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(end = 30.dp, bottom = 30.dp)
+                        .wrapContentWidth(Alignment.End)
+                        .wrapContentHeight(Alignment.Bottom)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(
+                            modifier = Modifier
+                                .padding(end = 20.dp)
+                                .clickable(
+                                    enabled = true,
+                                    onClick = cancel_button
+                                )
+                        ) {
                             Text(
                                 text = "キャンセル",
-                                fontSize = 30.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = Color.Blue
+                                color = Color.Red
                             )
                         }
-                    }
-                    Card(
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = determine_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
+                        Column(
+                            modifier = Modifier
+                                .clickable(
+                                    enabled = true,
+                                    onClick = determine_button
+                                )
+                        ) {
                             Text(
                                 text = "決定",
-                                fontSize = 30.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color.Red
                             )
                         }
                     }
                 }
-            }
 
+            }
         }
     }
 }
 
 @Composable
 fun BreakConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Unit) {
-    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
-        Column(
-            modifier = Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(text = "確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "ゲームを中断してもいいですか？", fontSize = 20.sp)
-            Column(modifier = Modifier.padding(top = 20.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Card(
-                        elevation = 4.dp,
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = cancel_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0x80000000))
+            .clickable(enabled = true, onClick = cancel_button),
+        contentAlignment = Alignment.Center
+    ) {
+        Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
+            Column(
+                modifier = Modifier.padding(top = 20.dp),
+            ) {
+                Column(modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                    Text(text = "手札確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Column(modifier = Modifier.padding(top = 10.dp)) {
+                        Text(text = "ゲームを中断してもよろしいですか？", fontSize = 19.sp)
+                    }
+                }
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(end = 30.dp, bottom = 30.dp)
+                        .wrapContentWidth(Alignment.End)
+                        .wrapContentHeight(Alignment.Bottom)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(
+                            modifier = Modifier
+                                .padding(end = 20.dp)
+                                .clickable(
+                                    enabled = true,
+                                    onClick = cancel_button
+                                )
+                        ) {
                             Text(
                                 text = "キャンセル",
-                                fontSize = 30.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = Color.Blue
+                                color = Color.Red
                             )
                         }
-                    }
-                    Card(
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = determine_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
+                        Column(
+                            modifier = Modifier
+                                .clickable(
+                                    enabled = true,
+                                    onClick = determine_button
+                                )
+                        ) {
                             Text(
                                 text = "決定",
-                                fontSize = 30.sp,
+                                fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color.Red
                             )
                         }
                     }
                 }
-            }
 
+            }
         }
     }
 }
 
 @Preview
 @Composable
-fun PreviewConfirmationCard() {
+fun PreviewHandConfirmationCard() {
     val navController = rememberNavController()
     HandConfirmationCard(
         determine_button = {
@@ -137,5 +162,19 @@ fun PreviewConfirmationCard() {
             navController.navigate("battle")
         },
         handCardNumber = 1
+    )
+}
+
+@Preview
+@Composable
+fun PreviewBreakConfirmationCard() {
+    val navController = rememberNavController()
+    BreakConfirmationCard(
+        determine_button = {
+            navController.navigate("battle")
+        },
+        cancel_button = {
+            navController.navigate("battle")
+        }
     )
 }
