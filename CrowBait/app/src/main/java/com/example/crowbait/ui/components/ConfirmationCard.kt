@@ -25,7 +25,8 @@ fun HandConfirmationCard(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0x80000000)),
+            .background(Color(0x80000000))
+            .clickable(enabled = true, onClick = cancel_button),
         contentAlignment = Alignment.Center
     ) {
         Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
