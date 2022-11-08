@@ -21,7 +21,7 @@ fun HandConfirmationCard(
     cancel_button: () -> Unit,
     handCardNumber: Int?
 ) {
-    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(20)) {
+    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(10)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
