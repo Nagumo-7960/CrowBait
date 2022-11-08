@@ -21,49 +21,40 @@ fun HandConfirmationCard(
     cancel_button: () -> Unit,
     handCardNumber: Int?
 ) {
-    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(10)) {
+    Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
         Column(
             modifier = Modifier.padding(top = 20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(text = "${handCardNumber}を選択していいですか？", fontSize = 20.sp)
-            Column(modifier = Modifier.padding(top = 20.dp)) {
+            Column(modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                Text(text = "手札確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                Column(modifier = Modifier.padding(top = 10.dp)) {
+                    Text(text = "${handCardNumber}を選択してもよろしいですか？", fontSize = 20.sp)
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(end = 30.dp, bottom = 30.dp)
+                    .wrapContentWidth(Alignment.End)
+                    .wrapContentHeight(Alignment.Bottom)
+                ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Card(
-                        elevation = 4.dp,
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = cancel_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text(
-                                text = "キャンセル",
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Blue
-                            )
-                        }
+                    Column(modifier = Modifier.padding(end = 20.dp)) {
+                        Text(
+                            text = "キャンセル",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
                     }
-                    Card(
-                        modifier = Modifier
-                            .size(200.dp, 100.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = determine_button
-                            )
-                    ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text(
-                                text = "決定",
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Red
-                            )
-                        }
+                    Column() {
+                        Text(
+                            text = "決定",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Red
+                        )
                     }
                 }
             }
