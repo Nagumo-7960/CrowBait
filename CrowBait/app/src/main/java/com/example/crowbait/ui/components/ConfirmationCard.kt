@@ -33,9 +33,7 @@ fun HandConfirmationCard(
                 .fillMaxSize()
                 .background(Color(0x80000000))
                 .clickable(enabled = true, onClick = cancel_button)
-        ) {
-
-        }
+        ) {}
         Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
             Column(
                 modifier = Modifier.padding(top = 20.dp),
@@ -104,10 +102,15 @@ fun BreakConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Uni
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0x80000000))
-            .clickable(enabled = true, onClick = cancel_button),
+            .background(Color(0x80000000)),
         contentAlignment = Alignment.Center
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0x80000000))
+                .clickable(enabled = true, onClick = cancel_button)
+        ) {}
         Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
             Column(
                 modifier = Modifier.padding(top = 20.dp),
