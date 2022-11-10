@@ -25,15 +25,29 @@ fun HandConfirmationCard(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0x80000000))
-            .clickable(enabled = true, onClick = cancel_button),
+            .background(Color(0x80000000)),
         contentAlignment = Alignment.Center
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0x80000000))
+                .clickable(enabled = true, onClick = cancel_button)
+        ) {
+
+        }
         Card(modifier = Modifier.size(370.dp, 200.dp), shape = RoundedCornerShape(5)) {
             Column(
                 modifier = Modifier.padding(top = 20.dp),
             ) {
-                Column(modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                Column(
+                    modifier = Modifier.padding(
+                        top = 10.dp,
+                        start = 20.dp,
+                        end = 20.dp,
+                        bottom = 20.dp
+                    )
+                ) {
                     Text(text = "手札確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                     Column(modifier = Modifier.padding(top = 10.dp)) {
                         Text(text = "${handCardNumber}を選択してもよろしいですか？", fontSize = 20.sp)
@@ -98,7 +112,14 @@ fun BreakConfirmationCard(determine_button: () -> Unit, cancel_button: () -> Uni
             Column(
                 modifier = Modifier.padding(top = 20.dp),
             ) {
-                Column(modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                Column(
+                    modifier = Modifier.padding(
+                        top = 10.dp,
+                        start = 20.dp,
+                        end = 20.dp,
+                        bottom = 20.dp
+                    )
+                ) {
                     Text(text = "手札確認", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                     Column(modifier = Modifier.padding(top = 10.dp)) {
                         Text(text = "ゲームを中断してもよろしいですか？", fontSize = 19.sp)
