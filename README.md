@@ -1,9 +1,8 @@
 # シンプルで奥の深い心理戦を楽しむカードゲーム「CrowBait」
 CrowBaitは，1体1で対戦を楽しむカードゲームアプリです．
-
 <p>
-  <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169121-f7c25649-fb12-4cbf-afbe-9f54bc009fe3.png"　width="20%">
-  <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169074-d217af7f-a34b-45aa-ab87-b2fb23c55582.png"　width="20%">
+  <img width="250px" src="https://user-images.githubusercontent.com/69156255/201856979-d6c40d82-04ec-4924-a098-aa77a59ffe18.png"　width="20%">
+  <img width="250px" src="https://user-images.githubusercontent.com/69156255/201855791-fd020829-5c76-4133-ab89-3ced069a2440.png"　width="20%">
   <img width="250px" src="https://user-images.githubusercontent.com/69156255/200169013-2b5c7546-c958-46e3-8f24-20ea4fce7535.png"　width="20%">
 </p>
 
