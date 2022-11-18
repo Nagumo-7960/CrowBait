@@ -97,20 +97,19 @@ fun RoundResultScreen(
                         BigSelectCard(selectCardNumber = firstPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "先攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            if(roundResultCheck.winner=="first" && deckNumber>0){
+                            if (roundResultCheck.winner == "first" && deckNumber > 0) {
                                 Text(
                                     text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }else if(roundResultCheck.winner=="second" && deckNumber<0){
+                            } else if (roundResultCheck.winner == "second" && deckNumber < 0) {
                                 Text(
                                     text = "得点:${firstPlayer.previousScore}→${firstPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }
-                            else{
+                            } else {
                                 Text(
                                     text = "得点:${firstPlayer.score}",
                                     fontSize = 15.sp,
@@ -123,20 +122,19 @@ fun RoundResultScreen(
                         BigSelectCard(selectCardNumber = secondPlayer.usedHandsList.last())
                         Column(modifier = Modifier.padding(top = 10.dp)) {
                             Text(text = "後攻プレイヤー", fontSize = 15.sp, color = Color.White)
-                            if(roundResultCheck.winner=="second" && deckNumber>0){
+                            if (roundResultCheck.winner == "second" && deckNumber > 0) {
                                 Text(
                                     text = "得点:${secondPlayer.previousScore}→${secondPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }else if(roundResultCheck.winner=="first" && deckNumber<0){
+                            } else if (roundResultCheck.winner == "first" && deckNumber < 0) {
                                 Text(
                                     text = "得点:${secondPlayer.previousScore}→${secondPlayer.score}",
                                     fontSize = 15.sp,
                                     color = Color.White
                                 )
-                            }
-                            else{
+                            } else {
                                 Text(
                                     text = "得点:${secondPlayer.score}",
                                     fontSize = 15.sp,
@@ -182,9 +180,9 @@ fun PreviewRoundResultScreen() {
     secondPlayer.usedHandsList.add(3)
     roundResultCheck.roundResultCheck(firstPlayer, secondPlayer)
     RoundResultScreen(
-        toFirst = {navController.navigate("first")},
-        toFinal = {navController.navigate("final")},
-        toHome = {navController.navigate("home")},
+        toFirst = { navController.navigate("first") },
+        toFinal = { navController.navigate("final") },
+        toHome = { navController.navigate("home") },
         viewModel = BattleScreenViewModel()
     )
 }

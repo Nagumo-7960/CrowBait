@@ -68,7 +68,7 @@ fun HomeScreen(toStart: () -> Unit, toCheckRule: () -> Unit) {
                         end = 40.dp
                     )
             ) {
-                Box(contentAlignment = Alignment.Center){
+                Box(contentAlignment = Alignment.Center) {
                     Image(
                         modifier = Modifier.fillMaxWidth(),
                         painter = painterResource(id = R.drawable.titlelogo_black),

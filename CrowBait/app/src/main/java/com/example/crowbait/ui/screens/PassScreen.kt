@@ -65,12 +65,12 @@ fun PassScreen(toSecond: () -> Unit, toHome: () -> Unit, viewModel: BattleScreen
 
 @Preview
 @Composable
-fun PreviewPassScreen(){
+fun PreviewPassScreen() {
     val navController = rememberNavController()
     val viewModel: BattleScreenViewModel = BattleScreenViewModel()
     PassScreen(
-        toSecond = {navController.navigate("second")},
-        toHome = {navController.navigate("home")},
-        viewModel=viewModel
+        toSecond = { navController.navigate("second") },
+        toHome = { navController.navigate("home") },
+        viewModel = viewModel
     )
 }

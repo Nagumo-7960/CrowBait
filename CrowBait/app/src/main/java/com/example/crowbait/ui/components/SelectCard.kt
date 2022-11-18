@@ -28,7 +28,7 @@ fun SelectCard(selectCardNumber: Int, onClick: () -> Unit) {
                 ),
             shape = CircleShape,
         ) {
-            Box(contentAlignment = Alignment.Center){
+            Box(contentAlignment = Alignment.Center) {
                 if (selectCardNumber < 10) {
                     Text(
                         text = selectCardNumber.toString(), fontSize = 20.sp
@@ -104,28 +104,19 @@ fun PreviewSelectCard() {
 @Composable
 fun PreviewNonSelectCard() {
     val navController = rememberNavController()
-    NonSelectCard(
-        10,
-
-        )
+    NonSelectCard(10)
 }
 
 @Preview
 @Composable
 fun PreviewBigSelectCard_10() {
     val navController = rememberNavController()
-    BigSelectCard(
-        10,
-
-        )
+    BigSelectCard(10)
 }
 
 @Preview
 @Composable
 fun PreviewBigSelectCard_5() {
     val navController = rememberNavController()
-    BigSelectCard(
-        5,
-
-        )
+    BigSelectCard(5)
 }

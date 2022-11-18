@@ -17,7 +17,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun CheckRuleScreen(toBack: () -> Unit) {
-    LazyColumn(){
+    LazyColumn {
         item {
             Column(modifier = Modifier.fillMaxSize()) {
                 Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
@@ -87,7 +87,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                             fontWeight = FontWeight.Bold,
                             color = Color.White
                         )
-                        Column() {
+                        Column {
                             Text(
                                 text = "ホーム画面",
                                 fontSize = 20.sp,
@@ -107,7 +107,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                                 )
                             }
                         }
-                        Column() {
+                        Column {
                             Text(
                                 text = "対戦画面",
                                 fontSize = 20.sp,
@@ -142,7 +142,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                                 )
                             }
                         }
-                        Column() {
+                        Column {
                             Text(
                                 text = "1回戦ごとの結果画面",
                                 fontSize = 20.sp,
@@ -188,7 +188,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                             }
                         }
 
-                        Column() {
+                        Column {
                             Text(
                                 text = "最終結果画面",
                                 fontSize = 20.sp,

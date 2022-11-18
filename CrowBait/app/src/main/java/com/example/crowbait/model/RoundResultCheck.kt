@@ -1,6 +1,5 @@
 package com.example.crowbait.model
 
-import android.util.Log
 import com.example.crowbait.ui.screens.battleRound
 import com.example.crowbait.ui.screens.deckNumber
 

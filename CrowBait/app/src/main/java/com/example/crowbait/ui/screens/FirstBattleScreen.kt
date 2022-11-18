@@ -20,11 +20,11 @@ import com.example.crowbait.ui.components.*
 private var firstCardSet = 1
 
 @Composable
-fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleScreenViewModel) {
+fun FirstBattleScreen(toSecond: () -> Unit, toHome: () -> Unit, viewModel: BattleScreenViewModel) {
     val isBattleConfirmation = viewModel.battleConfirmation.observeAsState().value
     val isBreakConfirmation = viewModel.breakConfirmation.observeAsState().value
     BattleBreakCard(
-        toConfirm = {viewModel.changeBreakConfirmation()}
+        toConfirm = { viewModel.changeBreakConfirmation() }
     )
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -48,7 +48,7 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
             }
             Column(modifier = Modifier.padding(top = 40.dp)) {
                 Row {
-                    Card{
+                    Card {
                         Text(
                             modifier = Modifier
                                 .background(color = Color.Yellow)
@@ -58,7 +58,11 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                         )
                     }
                     Row(modifier = Modifier.padding(start = 10.dp)) {
-                        Text(text = "得点：${firstPlayer.score}", fontSize = 30.sp, color = Color.White)
+                        Text(
+                            text = "得点：${firstPlayer.score}",
+                            fontSize = 30.sp,
+                            color = Color.White
+                        )
                     }
                 }
             }
@@ -68,9 +72,9 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                for(i in 1..11 step 5){
+                for (i in 1..11 step 5) {
                     Row(modifier = Modifier.padding(top = 20.dp)) {
-                        for (j in i..i+4) {
+                        for (j in i..i + 4) {
                             Column(modifier = Modifier.padding(start = 10.dp)) {
                                 if (firstPlayer.usedHandsList.contains(j)) {
                                     NonSelectCard(
@@ -90,12 +94,12 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
         }
         if (isBattleConfirmation == true) {
             HandConfirmationCard(
-                determine_button = { getFirstPlayerHand(firstCardSet,toSecond) },
+                determine_button = { getFirstPlayerHand(firstCardSet, toSecond) },
                 cancel_button = { viewModel.changeBattleConfirmation() },
                 handCardNumber = firstCardSet
             )
         }
-        if(isBreakConfirmation == true){
+        if (isBreakConfirmation == true) {
             BreakConfirmationCard(
                 determine_button = toHome,
                 cancel_button = { viewModel.changeBreakConfirmation() }
@@ -105,13 +109,13 @@ fun FirstBattleScreen(toSecond: () -> Unit, toHome:() -> Unit,viewModel: BattleS
 
 }
 
-fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit, ) {
+fun getFirstPlayerHand(handNumber: Int, toSecond: () -> Unit) {
     //配列の(n回戦)番目に出す手の数字を入れる
     firstPlayer.usedHandsList.add(handNumber)
     toSecond()
 }
 
-fun firstChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel){
+fun firstChangeConfirmation(handNumber: Int, viewModel: BattleScreenViewModel) {
     firstCardSet = handNumber
     viewModel.changeBattleConfirmation()
 }
@@ -122,8 +126,8 @@ fun PreviewBattleScreen() {
     val navController = rememberNavController()
     val viewModel: BattleScreenViewModel = BattleScreenViewModel()
     FirstBattleScreen(
-        toSecond = {navController.navigate("second")},
-        toHome = {navController.navigate("home")},
+        toSecond = { navController.navigate("second") },
+        toHome = { navController.navigate("home") },
         viewModel = viewModel
     )
 }
