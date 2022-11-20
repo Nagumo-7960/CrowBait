@@ -26,19 +26,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                         .fillMaxSize()
                         .padding(top = 20.dp, start = 20.dp, bottom = 20.dp, end = 20.dp)
                 ) {
-                    Column {
-                        Text(
-                            text = "基本的なルール",
-                            fontSize = 35.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                        Text(
-                            text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
-                            fontSize = 20.sp,
-                            color = Color.White
-                        )
-                    }
+                    BasicRules()
                     Column(modifier = Modifier.padding(top = 20.dp)) {
                         Text(
                             text = "ゲームの流れ",
@@ -228,6 +216,23 @@ fun BackButton(toBack:() -> Unit){
                 )
             }
         }
+    }
+}
+
+@Composable
+fun BasicRules(){
+    Column {
+        Text(
+            text = "基本的なルール",
+            fontSize = 35.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        Text(
+            text = "CrowBaitは、1~15の数字が書かれた手札から1枚のカードを選び、数字の大きい人が得点を獲得するカードゲームです。",
+            fontSize = 20.sp,
+            color = Color.White
+        )
     }
 }
 
