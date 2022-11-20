@@ -28,27 +28,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
                 ) {
                     BasicRules()
                     Column(modifier = Modifier.padding(top = 20.dp)) {
-                        Text(
-                            text = "ゲームの流れ",
-                            fontSize = 35.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                        Text(
-                            text = "-1~10までの数字のうち、1枚ずつ山札から選ばれる",
-                            fontSize = 20.sp,
-                            color = Color.White
-                        )
-                        Text(
-                            text = "先行プレイヤーが手札を選ぶ→後攻プレイヤーが手札を選ぶ→対戦結果が出る",
-                            fontSize = 20.sp,
-                            color = Color.White
-                        )
-                        Text(
-                            text = "これを手札の枚数15回繰り返し、最終的に得点が多かったプレイヤーの勝利",
-                            fontSize = 20.sp,
-                            color = Color.White
-                        )
+                        RunOfPlay()
                     }
                     Column(modifier = Modifier.padding(top = 20.dp)) {
                         Text(
@@ -197,7 +177,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
 }
 
 @Composable
-fun BackButton(toBack:() -> Unit){
+fun BackButton(toBack: () -> Unit) {
     Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
         Card(
             modifier = Modifier
@@ -220,7 +200,7 @@ fun BackButton(toBack:() -> Unit){
 }
 
 @Composable
-fun BasicRules(){
+fun BasicRules() {
     Column {
         Text(
             text = "基本的なルール",
@@ -235,6 +215,34 @@ fun BasicRules(){
         )
     }
 }
+
+@Composable
+fun RunOfPlay() {
+    Column {
+        Text(
+            text = "ゲームの流れ",
+            fontSize = 35.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        Text(
+            text = "-1~10までの数字のうち、1枚ずつ山札から選ばれる",
+            fontSize = 20.sp,
+            color = Color.White
+        )
+        Text(
+            text = "先行プレイヤーが手札を選ぶ→後攻プレイヤーが手札を選ぶ→対戦結果が出る",
+            fontSize = 20.sp,
+            color = Color.White
+        )
+        Text(
+            text = "これを手札の枚数15回繰り返し、最終的に得点が多かったプレイヤーの勝利",
+            fontSize = 20.sp,
+            color = Color.White
+        )
+    }
+}
+
 
 @Preview
 @Composable
