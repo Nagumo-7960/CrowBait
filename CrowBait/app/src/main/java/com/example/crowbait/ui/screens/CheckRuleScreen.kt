@@ -20,25 +20,7 @@ fun CheckRuleScreen(toBack: () -> Unit) {
     LazyColumn {
         item {
             Column(modifier = Modifier.fillMaxSize()) {
-                Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
-                    Card(
-                        modifier = Modifier
-                            .size(100.dp, 50.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = toBack
-                            )
-                    ) {
-                        Box(
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = "もどる",
-                                fontSize = 15.sp
-                            )
-                        }
-                    }
-                }
+                BackButton(toBack)
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -221,6 +203,29 @@ fun CheckRuleScreen(toBack: () -> Unit) {
 
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun BackButton(toBack:() -> Unit){
+    Column(modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp)) {
+        Card(
+            modifier = Modifier
+                .size(100.dp, 50.dp)
+                .clickable(
+                    enabled = true,
+                    onClick = toBack
+                )
+        ) {
+            Box(
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "もどる",
+                    fontSize = 15.sp
+                )
             }
         }
     }
