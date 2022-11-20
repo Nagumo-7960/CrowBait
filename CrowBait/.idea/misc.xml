@@ -144,7 +144,16 @@
         <entry key="../../../../../../layout/compose-model-1666698126382.xml" value="0.21663851351351351" />
         <entry key="../../../../../../layout/compose-model-1666944691182.xml" value="0.1" />
         <entry key="../../../../../../layout/compose-model-1667401584556.xml" value="0.10833333333333334" />
+        <entry key="../../../../../../layout/compose-model-1668944499561.xml" value="0.33" />
+        <entry key="../../../../../../layout/compose-model-1668944962583.xml" value="0.22" />
         <entry key="app/src/main/java/com/example/crowbait/ui/components/ConfirmationCard.kt" value="0.25" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/components/SelectCard.kt" value="0.5636896046852123" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/CheckRuleScreen.kt" value="0.25925925925925924" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/FinalResultScreen.kt" value="0.22314814814814815" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/FirstBattleScreen.kt" value="0.22314814814814815" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/PassScreen.kt" value="0.22314814814814815" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/RoundResultScreen.kt" value="0.1" />
+        <entry key="app/src/main/java/com/example/crowbait/ui/screens/SecondBattleScreen.kt" value="0.3135021097046414" />
       </map>
     </option>
   </component>
